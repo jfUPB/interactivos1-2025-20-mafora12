@@ -125,7 +125,9 @@ Aprendí que tener un botón con un texto dinámico puede mejorar bastante la ex
 
 - Qué hice yo?
   
-En mi caso, mi código también recibía letras desde el micro:bit (por ejemplo, ‘A’ o ‘B’ si se presionaban los botones), y hacía que el círculo se moviera a la izquierda o derecha. Pero mi versión era un poco más sencilla: no usé un botón para conectar, sino que abría el puerto directamente o dependía más del ejemplo básico. Tampoco tenía una validación tan clara del estado de la conexión.
+Mi código también recibía letras desde el micro:bit (por ejemplo, ‘A’ o ‘B’ si se presionaban los botones), y hacía que el círculo se moviera a la izquierda o derecha. Pero mi versión era un poco más sencilla: no usé un botón para conectar, sino que abría el puerto directamente o dependía más del ejemplo básico. Tampoco tenía una validación tan clara del estado de la conexión.
+
+Mi enfoque funcionó, pero no era tan robusto ni tan organizado como el de mi compañero. Me di cuenta de que vale la pena tomarse el tiempo de hacer que el código sea más claro y que tenga controles más completos.
 
 
 ### Actividad 9  
