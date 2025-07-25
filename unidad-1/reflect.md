@@ -108,3 +108,27 @@ Al principio no tenía tan claro para qué me iba a servir este curso, pero desp
 ### 4.
 
 El tutorial fue muy bueno, aunque comparado con la actividad real sí noté algunas diferencias. Aun así, seguir el paso a paso me ayudó mucho a entender la estructura del código y me dio seguridad. Después de hacerlo una vez, ya me dieron ganas de probar cosas por mi cuenta y modificarlo a mi estilo.
+
+
+
+
+### Actividad 9
+
+#### 1. Continuar:
+El video del teatro, donde el logo cambiaba según la música, me pareció muy impactante. Fue visualmente impresionante y además me ayudó a entender mejor cuál es el verdadero potencial de los sistemas físicos interactivos. Me inspiró mucho porque mostró cómo se pueden generar experiencias muy inmersivas con tecnología y arte.
+
+#### 2. Dejar de hacer:
+En general, la forma en que se ha dado el tema me parece muy buena, clara y bien estructurada. Sin embargo, siento que las actividades 5 y 6 podrían tener un poco más de tiempo o acompañamiento, ya que son más complejas de entender, sobre todo al momento de lograr la comunicación entre el micro:bit y p5.js. A veces se sintió un poco rápido y eso puede dificultar el proceso.
+
+#### 3. Empezar a hacer:
+Me genera mucha curiosidad explorar interacciones más complejas, especialmente con sensores como el de luz y temperatura. Me gustaría ver ejemplos más avanzados o creativos como el del teatro, donde se combinan varias entradas y salidas para lograr efectos visuales impactantes.
+
+#### 4. Balance inspiración vs. técnica:
+Siento que hubo un buen equilibrio entre la parte inspiradora, como los videos y ejemplos de la Actividad 01, y la parte técnica de las actividades 03 a 06. Empezar con inspiración me ayudó a entender por qué estamos aprendiendo esto, y luego la parte técnica me permitió materializar esas ideas.
+
+#### 5. Comentario adicional:
+En general me gustó mucho esta unidad. Me ayudó a conectar ideas técnicas con conceptos más artísticos, y me emociona seguir explorando nuevas formas de interacción entre el mundo físico y el digital.
+
+
+
+
