@@ -93,5 +93,5 @@ El momento “¡Aha!” lo tuve cuando por fin presioné un botón en el micro:b
 3.
 Al principio no tenía tan claro para qué me iba a servir este curso, pero después de construir el prototipo, me di cuenta de que esto abre muchas posibilidades creativas y profesionales. Ahora entiendo que no solo se trata de hacer cosas visuales o físicas por separado, sino de combinarlas para crear experiencias que respondan al usuario. Me sirve para pensar en instalaciones interactivas, productos digitales que se conecten con el cuerpo o el entorno.
 
-4.  
-EL tutuorial fue muy bueno, pero al comparlo con la actividad real fue un poco mas distinto, pero aun así, Seguir el paso a paso me permitió entender la estructura del código y sentir que sí era capaz. Ya después de hacerlo una vez, sí me dieron ganas de intentar hacer variaciones por mi cuenta.
+4.
+El tutorial fue muy bueno, aunque comparado con la actividad real sí noté algunas diferencias. Aun así, seguir el paso a paso me ayudó mucho a entender la estructura del código y me dio seguridad. Después de hacerlo una vez, ya me dieron ganas de probar cosas por mi cuenta y modificarlo a mi estilo.
