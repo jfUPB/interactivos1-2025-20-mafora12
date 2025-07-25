@@ -5,7 +5,7 @@
 
 ### Parte 1:
 
-### 1.
+#### 1.
 
 Un sistema físico interactivo es una forma de relacionarme y combinar el entorno con los computadores. Por ejemplo, si presiono un botón físico, eso puede activar algo en el software o en el computador. Tiene tres partes principales:
 
