@@ -3,7 +3,8 @@
 
 ### Actividad 7  
 
-Parte1:
+Parte 1:  
+
 1.   
 Un sistema fisico interactivo es una forma de relacionarme y combinar el entorno con los computadores, así si undo un boton afuera hace algo en el software o computador. Tiene tres partes que son:
      
