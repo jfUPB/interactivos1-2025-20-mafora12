@@ -111,8 +111,21 @@ Al principio no tenía tan claro para qué me iba a servir este curso, pero desp
 
 El tutorial fue muy bueno, aunque comparado con la actividad real sí noté algunas diferencias. Aun así, seguir el paso a paso me ayudó mucho a entender la estructura del código y me dio seguridad. Después de hacerlo una vez, ya me dieron ganas de probar cosas por mi cuenta y modificarlo a mi estilo.  
 
+### Actividad 8.
 
+- Qué diferencias hay?
+  
+Mi compañero manejó la conexión del micro:bit con un botón que cambia de texto entre “Connect to micro:bit” y “Disconnect”, lo cual me pareció muy útil porque da más claridad al usuario. Además, usó una variable booleana llamada "connectionInitialized" para asegurarse de limpiar el puerto solo una vez cuando se conecta, lo que hace que el código sea más estable y no se repita esa acción muchas veces.
 
+Otra diferencia importante es cómo estructura la lectura de los datos: primero verifica si hay datos disponibles (port.availableBytes() > 0) y luego lee solo un byte con port.read(1), mientras que yo tal vez lo tenía más directo y simple, sin ese control.
+
+- Qué aprendi?
+  
+Aprendí que tener un botón con un texto dinámico puede mejorar bastante la experiencia del usuario. También entendí que limpiar el puerto una sola vez al conectar evita errores raros o comportamientos extraños que a veces pasaban en mi código. Me gustó mucho su forma de organizar las funciones y mantener el control de la conexión en una sola parte del código.
+
+- Qué hice yo?
+  
+En mi caso, mi código también recibía letras desde el micro:bit (por ejemplo, ‘A’ o ‘B’ si se presionaban los botones), y hacía que el círculo se moviera a la izquierda o derecha. Pero mi versión era un poco más sencilla: no usé un botón para conectar, sino que abría el puerto directamente o dependía más del ejemplo básico. Tampoco tenía una validación tan clara del estado de la conexión.
 
 
 ### Actividad 9  
