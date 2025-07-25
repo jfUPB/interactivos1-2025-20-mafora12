@@ -11,7 +11,6 @@ Un sistema físico interactivo es una forma de relacionarme y combinar el entorn
 - **Procesamiento:** El sistema interpreta esas acciones y decide qué hacer con ellas.
 - **Outputs:** Es la reacción visible o física del sistema después de procesar la entrada, como mover algo en pantalla o encender una luz.
 
----
 
 ### 2.
 
@@ -27,7 +26,6 @@ Un sistema físico interactivo es una forma de relacionarme y combinar el entorn
 - **Procesamiento:** El programa lee esa letra y decide qué hacer según cuál fue.
 - **Output:** El círculo en la pantalla se mueve en la dirección correspondiente (izquierda o derecha).
 
----
 
 ### 3.
 
@@ -41,13 +39,11 @@ serial.on('data', gotData);
 
 Aquí, `gotData` es una función que se ejecuta cada vez que llega un mensaje desde el micro:bit.
 
----
 
 ### 4.
 
 La diferencia más clara es que en el arte o diseño tradicional uno hace todo a mano, como dibujar, pintar o diseñar algo directamente. En cambio, en el arte o diseño generativo, uno programa un sistema o un código que **crea cosas automáticamente**, a veces de forma aleatoria o con ciertos parámetros. Entonces no estás haciendo cada parte directamente, sino que le das instrucciones al programa para que lo genere, y muchas veces los resultados cambian cada vez.
 
----
 
 ### 5.
 
@@ -91,7 +87,6 @@ function draw() {
 }
 ```
 
----
 
 ## Parte 2
 
@@ -99,19 +94,16 @@ function draw() {
 
 Definitivamente lo más desafiante para mí fue la parte técnica, especialmente lograr que el micro:bit se comunicara bien con p5.js. Hacer que el código funcionara a la perfección fue bastante complejo, sobre todo porque a veces no entendía del todo cómo funcionaban las conexiones. Pero con el paso de las clases y los ejercicios, fui entendiendo mejor y logré avanzar.
 
----
 
 ### 2.
 
 El momento “¡Aha!” lo tuve cuando por fin presioné un botón en el micro:bit y el círculo en el canvas de p5.js se movió. Fue como: *¡Wooow, funcionó!*. En ese momento entendí que había una conexión real entre lo físico y lo digital. No solo estaba escribiendo código por separado, sino que lo que yo tocaba físicamente se estaba viendo reflejado en una pantalla. Sentí que realmente estaba creando una experiencia interactiva.
 
----
 
 ### 3.
 
 Al principio no tenía tan claro para qué me iba a servir este curso, pero después de construir el prototipo, me di cuenta de que esto abre muchas posibilidades creativas y profesionales. Ahora entiendo que no solo se trata de hacer cosas visuales o físicas por separado, sino de combinarlas para crear experiencias que respondan al usuario. Me sirve para pensar en instalaciones interactivas, productos digitales que se conecten con el cuerpo o el entorno, y proyectos artísticos con tecnología.
 
----
 
 ### 4.
 
