@@ -109,12 +109,13 @@ Al principio no tenía tan claro para qué me iba a servir este curso, pero desp
 
 #### 4.
 
-El tutorial fue muy bueno, aunque comparado con la actividad real sí noté algunas diferencias. Aun así, seguir el paso a paso me ayudó mucho a entender la estructura del código y me dio seguridad. Después de hacerlo una vez, ya me dieron ganas de probar cosas por mi cuenta y modificarlo a mi estilo.
+El tutorial fue muy bueno, aunque comparado con la actividad real sí noté algunas diferencias. Aun así, seguir el paso a paso me ayudó mucho a entender la estructura del código y me dio seguridad. Después de hacerlo una vez, ya me dieron ganas de probar cosas por mi cuenta y modificarlo a mi estilo.  
 
 
 
 
-### Actividad 9
+
+### Actividad 9  
 
 #### 1. Continuar:
 El video del teatro, donde el logo cambiaba según la música, me pareció muy impactante. Fue visualmente impresionante y además me ayudó a entender mejor cuál es el verdadero potencial de los sistemas físicos interactivos. Me inspiró mucho porque mostró cómo se pueden generar experiencias muy inmersivas con tecnología y arte.
