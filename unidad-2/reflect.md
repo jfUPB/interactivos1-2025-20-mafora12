@@ -26,7 +26,13 @@
 
 
 
-### Actividad 7.
+### Actividad 7.  
+
+En el diseño e implementación de mi compañero encuentro varios puntos positivos. Me parece acertado que haya utilizado "was_pressed()" para la lectura de botones, ya que permite detectar pulsaciones únicas y evita que se registren incrementos o decrementos múltiples al mantener el botón presionado. También destaco que en el conteo del tiempo haya utilizado la condición "<= 0" para detonar, ya que es más robusta y segura ante posibles desajustes en la temporización. La estructura del código es clara y sencilla de seguir, y la inclusión de la opción para volver al estado de configuración desde el estado armado con el toque del logo es una buena decisión de usabilidad.
+
+Sin embargo, veo oportunidades de mejora. La animación de explosión está implementada de forma bloqueante con un bucle "for" y pausas "(sleep)", lo que impide que el sistema detecte interacciones (como el toque para reinicio) hasta que termina la animación. Esto podría mejorarse haciendo la animación no bloqueante o verificando la entrada del usuario durante la secuencia, para permitir reiniciar en cualquier momento. También recomendaría estandarizar el uso de nombres de variables para mayor coherencia y utilizar una función dedicada a mostrar el tiempo en pantalla, evitando el uso prolongado de "display.scroll", ya que este puede hacer que el sistema no responda a eventos mientras se ejecuta. Finalmente, sería útil actualizar visualmente el valor de tiempo de forma inmediata cuando se presionan los botones, para que el usuario tenga retroalimentación instantánea.
+
+En resumen, el código de mi compañero es funcional y claro, pero podría optimizarse para mejorar la experiencia de usuario y la respuesta del sistema ante eventos.
 
 ### Actividad 8.
 
@@ -46,4 +52,5 @@ Le pondría un 4. No fue imposible, pero sí representó un salto grande pasar d
 Hubo momentos de frustración cuando el programa no reaccionaba a tiempo o se quedaba “congelado” por errores en el manejo del tiempo. Pero también tuve un momento “¡Aha!” cuando entendí que no se trataba de hacer todo en un solo bloque, sino de dejar que cada estado controlara su parte y que los eventos fueran la llave para cambiar de uno a otro. Ese momento me hizo sentir que ya dominaba la lógica de las máquinas de estados.
 
   
+
 
