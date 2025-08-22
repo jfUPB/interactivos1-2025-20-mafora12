@@ -39,5 +39,6 @@ Me hubiera servido tener más ejemplos con cosas cotidianas, como un semáforo o
 - ¿Qué tan difícil fue pasar del análisis a diseñar y programar? (1 a 5)  
 Yo lo pondría en un 4, porque no es imposible, pero sí requiere mucha atención. Pasar de entender un diagrama a convertirlo en código fue el paso más retador; hay que pensar en detalles que en el papel no se ven, como variables o eventos exactos.
 
-Comentario adicional:  
+- Comentario adicional:  
 Algo que quiero resaltar es que hubo momentos de frustración cuando no me funcionaba algo que parecía lógico, pero también tuve esos momentos de “¡Aha!” cuando encontré el error. Ver el proyecto funcionando fue muy satisfactorio, porque entendí que pensar en estados es como armar un rompecabezas: todo encaja si lo haces paso a paso.
+
