@@ -226,7 +226,7 @@ function connectToMicrobit() {
   if (!port.opened()) {
     port.open("MicroPython", 115200);
     // El estado se cambia a RUNNING cuando la conexión se abre correctamente
-    // Ya no usamos port.on('open') porque no está disponible la versión
+    // no usamos port.on('open') porque no está disponible la versión
     state = "RUNNING";
   } else {
     port.close();
@@ -252,6 +252,7 @@ function serialEvent() {
 ## Video
 
 [Video demostratativo](https://drive.google.com/drive/folders/1z2f6RTN997i51emsVQRiYwk9GghFwep0?usp=drive_link)
+
 
 
 
