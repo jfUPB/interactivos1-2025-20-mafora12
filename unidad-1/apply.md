@@ -2,6 +2,7 @@
 
 ## 🛠 Fase: Apply
 
+
 ### Actividad 5  
 Si oprimo el cuadro en el canva esta blanco y al conctarse al micro:bit se vuelve verde. Si oprimo el boton A del micro:bit se vueleve el cuadro rojo y si lo dejo de oprimir se vuelve verde.  
 

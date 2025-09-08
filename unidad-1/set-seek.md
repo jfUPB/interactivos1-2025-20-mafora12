@@ -4,6 +4,7 @@
 
 ### Actividad 1
 
+
 ¿Qué es un sistema físico interactivo?  
 
    Es un objeto que al sentir una acción o interaccion del usuario, lo procesa y lo convierte en una proyección.

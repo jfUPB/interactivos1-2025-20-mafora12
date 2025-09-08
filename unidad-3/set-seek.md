@@ -25,3 +25,4 @@ Imagen del modelo de la bomba 3.0:
 | **ARMED**      | `self.keyindex == len(self.key)` y clave correcta (`passIsOK == True`)    | `count = 20`, mostrar en pantalla, `keyindex = 0`, `state = 'CONFIG'`       | **CONFIG**             |
 | **ARMED**      | `self.keyindex == len(self.key)` y clave incorrecta (`passIsOK == False`) | `keyindex = 0` (reinicio de clave)                                          | ARMED                  |
 | **EXPLODED**   | `event.read() == 'T'` (logo tocado o UART 'T')                            | Reset: `count = 20`, `display.show(count)`, `startTime = ticks_ms()`        | **CONFIG**             |
+
