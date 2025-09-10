@@ -9,7 +9,7 @@ El micro:bit se comunica con el sketch en p5.js a través del puerto serie (UART
 data = "{},{},{},{}\n".format(xValue, yValue, aState, bState)
 uart.write(data)
 ```
-Brinda legibilidad y depuración, ya que al usar ASCII es fácil abrir un monitor serial y ver directamente qué está transmitiendo el micro:bit. Sin embargo, esto se logra a costa de cierta ineficiencia en el uso de bytes, pues cada número es transmitido como caracteres y no como datos binarios compactos.
+Usar ASCII hace que sea más fácil leer lo que manda el micro:bit y revisar en un monitor serial qué datos se están transmitiendo. La desventaja es que gasta más espacio, porque en vez de mandar los números en binario, los envía como texto caracter por caracter.
 
 ### ¿Cómo es la estructura del protocolo ASCII usado?
 El protocolo sigue una estructura simple:  
@@ -23,9 +23,9 @@ xValue, yValue, aState, bState\n
 
 "," → delimitador que permite dividir los datos.  
 
-"\n" → marca el final de la transmisión.  
+"\n" → marca el final de la transmisión.   
 
-Esto es un poco frajil y poco optimizado debido a que si el delimitador se pierde o se altera, toda la lectura queda dañada. En contraste, un protocolo binario sería más robusto en eficiencia, pero menos intuitivo. Aquí se esta priorizando la claridad sobre la optimización.  
+Este método no es tan seguro ni tan eficiente, porque si se llega a dañar o perder la coma que separa los datos, todo el mensaje queda malo. En cambio, un protocolo binario sería más rápido y estable, pero también más difícil de entender. En este caso se eligió que sea más claro aunque no sea lo más optimizado.
 
 ### Lectura y transformación de los datos en p5.js  
 
@@ -49,7 +49,7 @@ if (port.availableBytes() > 0) {
 
 ```
 
-Aquí se aprecia cómo los datos brutos enviados en ASCII se reinterpretan como coordenadas de pantalla (X, Y) y como estados lógicos de botones. Esto evidencia que el protocolo no solo transmite información, sino que también establece un contrato semántico: cada posición en la cadena tiene un significado preciso.  
+Se ve cómo los datos que llegan en ASCII se transforman en coordenadas de la pantalla (X, Y) y en el estado de los botones. Eso muestra que el protocolo no solo manda información, sino que también organiza el mensaje para que cada valor tenga un lugar y un sentido específico.
 
 ###  ¿Cómo se generan los eventos A pressed y B released que se generan en p5.js a partir de los datos que envía el micro:bit?   
 
@@ -72,4 +72,5 @@ Esto no funciona como un sistema que detecta cuándo un botón pasa de estar pre
 ## Dibujos
 <img width="1918" height="937" alt="image" src="https://github.com/user-attachments/assets/277e9abb-df2d-40ea-a488-e8ad51ad0558" />
 <img width="1918" height="932" alt="image" src="https://github.com/user-attachments/assets/c8080c4b-e7cf-491f-afc4-ff358cf58ae9" />
+
 
