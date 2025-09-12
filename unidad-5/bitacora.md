@@ -95,7 +95,24 @@ Aqui se empaquetan los valores del acelerómetro y los botones en formato binari
   - Necesitas conocer la estructura exacta de los datos para poder decodificarlos.
   - No es práctico para depurar o revisar sin herramientas adicionales.
 <img width="1263" height="577" alt="image" src="https://github.com/user-attachments/assets/d4e4902b-9afe-4518-9e40-913d285a5a69" />
+- El formato '>2h2B' significa:  
+> → orden big-endian (los bytes más significativos van primero).  
+2h → dos enteros de 16 bits con signo (2 bytes cada uno).  
+2B → dos enteros de 8 bits sin signo (1 byte cada uno).   
+Entonces:  
+xValue → ocupa 2 bytes.  
+yValue → ocupa 2 bytes.  
+aState → ocupa 1 byte. 
+bState → ocupa 1 byte.  
+En total, cada mensaje son 6 bytes enviados.
+
+- ¿Qué significa cada byte?
+  Los primeros 2 bytes: valor de xValue (puede ser positivo o negativo).
+  Los siguientes 2 bytes: valor de yValue (también con signo).
+  El quinto byte: estado del botón A (0 = no presionado, 1 = presionado).
+  El sexto byte: estado del botón B (0 = no presionado, 1 = presionado).
 <img width="1230" height="541" alt="image" src="https://github.com/user-attachments/assets/468cc386-595e-476b-ac0d-fa3fd4d534a9" />
+
 
 
 
