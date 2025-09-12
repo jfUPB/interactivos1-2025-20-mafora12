@@ -81,9 +81,21 @@ Esto no funciona como un sistema que detecta cuándo un botón pasa de estar pre
 
 Lo que se ve en la imagen con tantos símbolos raros pasa porque el micro:bit está enviando datos en binario con el struct.pack, y en la aplicación yo los estoy mostrando como texto. Como esos datos no corresponden a letras ni números, el programa intenta leerlos como si fueran texto y por eso aparecen esos caracteres sin sentido.  
 
-<img width="1237" height="407" alt="image" src="https://github.com/user-attachments/assets/8103990e-a211-4551-9f94-ca3968b10218" />
+<img width="1237" height="407" alt="image" src="https://github.com/user-attachments/assets/8103990e-a211-4551-9f94-ca3968b10218" />  
+Aqui se empaquetan los valores del acelerómetro y los botones en formato binario (dos enteros de 16 bits y dos bytes). En la captura, cada grupo de dos caracteres en hex representa un byte de esos datos empaquetados. Sí, el resultado es mucho más difícil de leer que cuando se mandan valores en ASCII, porque en vez de ver números claros, hay que interpretar los bytes y traducirlos para saber qué significa cada uno.
+
+ - Ventajas del formato binario
+    - Ocupa menos espacio, ya que se transmiten solo los bytes necesarios.
+    - Es más rápido de enviar y recibir, especialmente si hay muchos datos.
+    - Reduce errores al no depender de caracteres adicionales (comas, saltos de línea).
+
+- Desventajas del formato binario
+  - Es mucho más difícil de leer e interpretar a simple vista.
+  - Necesitas conocer la estructura exacta de los datos para poder decodificarlos.
+  - No es práctico para depurar o revisar sin herramientas adicionales.
 <img width="1263" height="577" alt="image" src="https://github.com/user-attachments/assets/d4e4902b-9afe-4518-9e40-913d285a5a69" />
 <img width="1230" height="541" alt="image" src="https://github.com/user-attachments/assets/468cc386-595e-476b-ac0d-fa3fd4d534a9" />
+
 
 
 
