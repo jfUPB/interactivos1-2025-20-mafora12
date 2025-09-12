@@ -77,10 +77,14 @@ Esto no funciona como un sistema que detecta cuándo un botón pasa de estar pre
 ## Actividad 2  
 
 ### ¿Por qué se ve este resultado?
-<img width="1233" height="552" alt="image" src="https://github.com/user-attachments/assets/291af6f7-14cb-4e74-90a1-51cfda9efa55" />
+<img width="1233" height="552" alt="image" src="https://github.com/user-attachments/assets/291af6f7-14cb-4e74-90a1-51cfda9efa55" />  
+
+Lo que se ve en la imagen con tantos símbolos raros pasa porque el micro:bit está enviando datos en binario con el struct.pack, y en la aplicación yo los estoy mostrando como texto. Como esos datos no corresponden a letras ni números, el programa intenta leerlos como si fueran texto y por eso aparecen esos caracteres sin sentido.  
+
 <img width="1237" height="407" alt="image" src="https://github.com/user-attachments/assets/8103990e-a211-4551-9f94-ca3968b10218" />
 <img width="1263" height="577" alt="image" src="https://github.com/user-attachments/assets/d4e4902b-9afe-4518-9e40-913d285a5a69" />
 <img width="1230" height="541" alt="image" src="https://github.com/user-attachments/assets/468cc386-595e-476b-ac0d-fa3fd4d534a9" />
+
 
 
 
