@@ -32,6 +32,7 @@ Este método no es tan seguro ni tan eficiente, porque si se llega a dañar o pe
 La función draw() se encarga de verificar si hay datos disponibles en el puerto serie. Luego los lee hasta encontrar el salto de línea (\n), los divide por comas y los convierte en variables numéricas o booleanas:
 
 ``` js
+function updateButtonStates(newAState, newBState) {
 if (port.availableBytes() > 0) {
   let data = port.readUntil("\n");
   if (data) {
@@ -95,6 +96,7 @@ Aqui se empaquetan los valores del acelerómetro y los botones en formato binari
   - No es práctico para depurar o revisar sin herramientas adicionales.
 <img width="1263" height="577" alt="image" src="https://github.com/user-attachments/assets/d4e4902b-9afe-4518-9e40-913d285a5a69" />
 <img width="1230" height="541" alt="image" src="https://github.com/user-attachments/assets/468cc386-595e-476b-ac0d-fa3fd4d534a9" />
+
 
 
 
