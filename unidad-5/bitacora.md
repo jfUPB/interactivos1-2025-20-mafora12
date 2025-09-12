@@ -121,16 +121,68 @@ Ejemplo:
 xValue = 100 → en hex: 00 64.  
 xValue = -100 → en hex: FF 9C.  
 Esto pasa igual con yValue.  
-Los botones en cambio siempre serán 00 o 01, porque son enteros sin signo de 8 bits.  
-<img width="1230" height="541" alt="image" src="https://github.com/user-attachments/assets/468cc386-595e-476b-ac0d-fa3fd4d534a9" />
+Los botones en cambio siempre serán 00 o 01, porque son enteros sin signo de 8 bits.
+
+<img width="1230" height="541" alt="image" src="https://github.com/user-attachments/assets/468cc386-595e-476b-ac0d-fa3fd4d534a9" />  
+Diferencias entre ASCII y binario  
+
+Binario (HEX): los datos aparecen como bytes crudos, difíciles de leer sin saber el formato (>2h2B).  
+ASCII: se muestran como números y caracteres legibles (ej: -356, 572, 0, 1).  
+
+Binario:   
+
+- Ventanjas  
+  - Ocupa menos espacio: cada número se guarda en su tamaño real (2 o 1 byte).  
+  - Transmisión más rápida y eficiente.  
+  - No pierde precisión con enteros grandes o negativos.  
+
+- Desventajas:  
+  - Difícil de interpretar a simple vista.  
+  - Necesita que emisor y receptor conozcan el mismo formato (endianess, tamaño de cada campo).  
+
+Formato ASCII   
+
+- Ventajas:    
+  - Muy fácil de leer e interpretar en cualquier terminal.  
+  - No necesitas conocer la estructura de datos para ver la información.  
+  - Más universal: cualquier programa que lea texto puede interpretarlo.  
+
+- Desventajas:
+  
+  - Consume más espacio: un número puede ocupar varios bytes solo para representarse en texto.  
+  - Transmisión más lenta.  
+  - Conversión entre texto y número requiere más procesamiento.  
 
 
+## Actividad 3
 
+### Explica:  
+En la unidad anterior era necesario enviar los datos en formato ASCII, por lo que cada número podía ocupar una cantidad diferente de caracteres; por eso se usaban delimitadores como comas para separar los valores y un salto de línea para indicar el final del paquete. En cambio, ahora al trabajar en formato binario con struct.pack(), cada dato ocupa un tamaño fijo en bytes (2 bytes para xValue y yValue, y 1 byte para aState y bState), lo que hace que el paquete completo tenga siempre la misma longitud (6 bytes). De esta forma, el receptor puede identificar de manera exacta cada paquete sin necesidad de delimitadores ni saltos de línea.
 
+### ¿Qué cambios observas?
 
+La diferencia es que antes los datos se enviaban en texto ASCII, entonces había que esperar hasta un salto de línea, separar la cadena con comas y convertir cada valor, lo que hacía el proceso más largo y dependía de delimitadores. En cambio, ahora se usan paquetes binarios de tamaño fijo (6 bytes), así que basta con leerlos directamente y extraer cada dato con sus posiciones exactas, lo que hace la comunicación más rápida y sin necesidad de saltos de línea ni separadores.
 
+### ¿Qué ves en la consola? ¿Por qué crees que se produce este error?  
 
+En la consola se ve que al inicio los datos llegan bien, pero después aparecen valores que no tienen sentido, como números muy grandes o muy pequeños. Esto pasa porque los datos se están leyendo en binario y a veces la lectura no queda bien alineada con el inicio del paquete, entonces los bytes se interpretan mal. En el formato ASCII eso no ocurría porque el salto de línea marcaba siempre dónde terminaba cada paquete, pero en binario todo depende de leer exactamente los 6 bytes correctos, y si se pierde o se descuadra un byte, los valores salen erróneos.  
 
+### ¿Qué veo?
+Lo que veo en este código es que ahora construiste un sistema más robusto de comunicación entre el micro:bit y p5.js, se usa un buffer de bytes (serialBuffer) para acumular los datos recibidos en lugar de leerlos directamente. Cada paquete tiene un formato fijo de 8 bytes, con un header (0xAA) al inicio, seguido de los datos y un checksum al final para validar que el paquete no llegó dañado. Esto soluciona el problema de “datos locos” que viste antes, porque aunque se pierdan o se desordenen algunos bytes, el receptor puede volver a sincronizarse buscando el header correcto.  
+
+Los datos dentro del paquete siguen siendo:   
+- microBitX → 2 bytes con signo.  
+- microBitY → 2 bytes con signo.  
+- microBitAState → 1 byte.  
+- microBitBState → 1 byte.  
+- el checksum → 1 byte.  
+
+En resumen: este código ya no solo lee valores, sino que maneja paquetes binarios con validación y usa esos datos para dibujar de forma interactiva en la pantalla, con más control y estabilidad que las versiones anteriores.
+
+###  ¿Qué cambios tienen los programas y ¿Qué puedes observar en la consola del editor de p5.js?
+El cambio más grande entre los programas es que ahora ya no estoy enviando simples datos separados por comas desde el micro\:bit, sino que armo un **paquete binario más completo**. Ese paquete empieza con un **header (0xAA)**, luego van los valores de los ejes y de los botones, y al final un **checksum** que sirve para verificar que el paquete no esté dañado. Del lado de p5.js también cambió la forma de leer: antes solo hacía un "readUntil("\n")" y separaba con comas, pero ahora voy guardando los bytes en un **buffer**, busco el header, reviso que el paquete tenga el tamaño exacto y valido con el checksum antes de usar los datos.
+
+En la consola de p5.js lo que observo son mensajes de conexión como *“Microbit ready to draw”*, los cambios de estado de los botones como *“A pressed”* o *“B released”*, y además aparecen los valores de "microBitX" y "microBitY" que se van actualizando con el acelerómetro. Esto me confirma que los datos están llegando de forma más ordenada y confiable que antes.
 
 
 
