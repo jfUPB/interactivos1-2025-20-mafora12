@@ -111,7 +111,15 @@ En total, cada mensaje son 6 bytes enviados.
   Los siguientes 2 bytes: valor de yValue (también con signo).
   El quinto byte: estado del botón A (0 = no presionado, 1 = presionado).
   El sexto byte: estado del botón B (0 = no presionado, 1 = presionado).
+
+- Como h es un entero con signo (16 bits), se codifica en complemento a dos.  
+Ejemplo:
+xValue = 100 → en hex: 00 64.  
+xValue = -100 → en hex: FF 9C.  
+Esto pasa igual con yValue.  
+Los botones en cambio siempre serán 00 o 01, porque son enteros sin signo de 8 bits.  
 <img width="1230" height="541" alt="image" src="https://github.com/user-attachments/assets/468cc386-595e-476b-ac0d-fa3fd4d534a9" />
+
 
 
 
