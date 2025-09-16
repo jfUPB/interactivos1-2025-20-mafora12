@@ -184,5 +184,4 @@ El cambio más grande entre los programas es que ahora ya no estoy enviando simp
 
 En la consola de p5.js lo que observo son mensajes de conexión como *“Microbit ready to draw”*, los cambios de estado de los botones como *“A pressed”* o *“B released”*, y además aparecen los valores de "microBitX" y "microBitY" que se van actualizando con el acelerómetro. Esto me confirma que los datos están llegando de forma más ordenada y confiable que antes.
 
-
-
+## Actividad 4
