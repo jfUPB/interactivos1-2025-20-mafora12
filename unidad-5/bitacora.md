@@ -185,3 +185,40 @@ El cambio más grande entre los programas es que ahora ya no estoy enviando simp
 En la consola de p5.js lo que observo son mensajes de conexión como *“Microbit ready to draw”*, los cambios de estado de los botones como *“A pressed”* o *“B released”*, y además aparecen los valores de "microBitX" y "microBitY" que se van actualizando con el acelerómetro. Esto me confirma que los datos están llegando de forma más ordenada y confiable que antes.
 
 ## Actividad 4
+
+### Construcción   
+Tomé el código de la unidad pasada, que funcionaba con datos en formato ASCII separados por comas y terminados en salto de línea ("data = "{},{},{},{}\n".format(xValue, yValue, aState,bState)"). Ese sistema era fácil de leer en consola, pero poco eficiente porque cada número ocupaba varios caracteres.
+
+En el micro:bit escribí el siguiente código en MicroPython, especificado en la actividad:  
+``` js
+from microbit import *
+import struct
+
+uart.init(115200)
+display.set_pixel(0, 0, 9)
+
+while True:
+    xValue = accelerometer.get_x()
+    yValue = accelerometer.get_y()
+    aState = button_a.is_pressed()
+    bState = button_b.is_pressed()
+    data = struct.pack('>2h2B', xValue, yValue, int(aState), int(bState))
+    checksum = sum(data) % 256
+    packet = b'\xAA' + data + bytes([checksum])
+    uart.write(packet)
+    sleep(100)
+```
+### Errores   
+Cuando probé la primera versión de mi código en p5.js, la consola mostraba:
+``` js
+Checksum incorrecto
+Checksum incorrecto
+Checksum incorrecto
+```
+Esto me sucedía porque estaba leyendo los bytes en orden "little-endian", pero el struct.pack los estaba enviando en "big-endian (>)".  
+Ajusté la lectura en p5.js para ensamblar los bytes como big-endian:  
+``` js
+let rawX = (xHigh << 8) | (xLow & 0xFF);
+let rawY = (yHigh << 8) | (yLow & 0xFF);
+```  
+<img width="1903" height="993" alt="image" src="https://github.com/user-attachments/assets/9049ebbb-10d1-4614-a6e8-b47bfff199ae" />
