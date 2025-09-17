@@ -208,17 +208,381 @@ while True:
     uart.write(packet)
     sleep(100)
 ```
-### Errores   
-Cuando probé la primera versión de mi código en p5.js, la consola mostraba:
+### Pruebas y errores 
+EL primer codigo que cree fue este 
 ``` js
-Checksum incorrecto
-Checksum incorrecto
-Checksum incorrecto
+/**
+ * GRID + micro:bit (datos binarios)
+ * 
+ * Acelerómetro x : cantidad y tamaño de círculos
+ * Acelerómetro y : posición
+ * Botón A        : random position
+ * Botón B        : save png
+ */
+
+'use strict';
+
+let tileCountX = 10;
+let tileCountY = 10;
+let tileWidth = 0;
+let tileHeight = 0;
+
+let circleCount = 0;
+let endSize = 0;
+let endOffset = 0;
+
+let actRandomSeed = 0;
+
+// ----- micro:bit -----
+let port;
+let connectBtn;
+let microBitX = 0;
+let microBitY = 0;
+let buttonA = false;
+let buttonB = false;
+
+let prevButtonA = false;
+let prevButtonB = false;
+
+let state = "WAIT_MICROBIT_CONNECTION";
+
+// buffer temporal para reconstruir los paquetes
+let packetBuffer = [];
+
+function setup() {
+  createCanvas(800, 800);
+  tileWidth = width / tileCountX;
+  tileHeight = height / tileCountY;
+  noFill();
+  stroke(0, 128);
+
+  // Conexión con micro:bit
+  port = createSerial();
+  connectBtn = createButton("Conectar micro:bit");
+  connectBtn.mousePressed(connectToMicrobit);
+
+  connectBtn.position(width / 2 - connectBtn.width / 2, height / 2 + 50);
+}
+
+function draw() {
+  if (state === "WAIT_MICROBIT_CONNECTION") {
+    background(220);
+    textAlign(CENTER, CENTER);
+    textSize(24);
+    text("Conecta el micro:bit para comenzar", width / 2, height / 2);
+    connectBtn.show();
+    return;
+  }
+
+  connectBtn.hide();
+
+  // procesar datos binarios
+  if (port.opened() && port.availableBytes() > 0) {
+    readBinaryPacket();
+  }
+
+  // Estado RUNNING
+  background(255);
+  randomSeed(actRandomSeed);
+
+  translate(tileWidth / 2, tileHeight / 2);
+
+  circleCount = int(map(microBitX, -1024, 1024, 1, 20));
+  endSize = map(microBitX, -1024, 1024, tileWidth / 2, 0);
+  endOffset = map(microBitY, -1024, 1024, 0, (tileWidth - endSize) / 2);
+
+  for (let gridY = 0; gridY < tileCountY; gridY++) {
+    for (let gridX = 0; gridX < tileCountX; gridX++) {
+      push();
+      translate(tileWidth * gridX, tileHeight * gridY);
+      scale(1, tileHeight / tileWidth);
+
+      let toggle = int(random(0, 4));
+      if (toggle == 0) rotate(-HALF_PI);
+      if (toggle == 1) rotate(0);
+      if (toggle == 2) rotate(HALF_PI);
+      if (toggle == 3) rotate(PI);
+
+      for (let i = 0; i < circleCount; i++) {
+        let diameter = map(i, 0, circleCount, tileWidth, endSize);
+        let offset = map(i, 0, circleCount, 0, endOffset);
+        ellipse(offset, 0, diameter, diameter);
+      }
+      pop();
+    }
+  }
+
+  if (buttonA && !prevButtonA) {
+    actRandomSeed = random(100000);
+  }
+  if (buttonB && !prevButtonB) {
+    saveCanvas("microbit_grid", "png");
+  }
+
+  prevButtonA = buttonA;
+  prevButtonB = buttonB;
+}
+
+function connectToMicrobit() {
+  if (!port.opened()) {
+    port.open("MicroPython", 115200);
+    state = "RUNNING";
+  } else {
+    port.close();
+    state = "WAIT_MICROBIT_CONNECTION";
+    connectBtn.html("Conectar micro:bit");
+  }
+}
+
+function readBinaryPacket() {
+  while (port.availableBytes() > 0) {
+    let byte = port.readByte();
+
+    if (byte === -1) return; // no data
+
+    packetBuffer.push(byte);
+
+    // buscar encabezado
+    if (packetBuffer[0] !== 0xAA) {
+      packetBuffer.shift();
+      continue;
+    }
+
+    // esperar paquete completo
+    if (packetBuffer.length >= 8) {
+      let packet = packetBuffer.slice(0, 8);
+      packetBuffer = [];
+
+      // verificar checksum
+      let dataBytes = packet.slice(0, 7);
+      let receivedChecksum = packet[7];
+      let computedChecksum = dataBytes.reduce((acc, val) => acc + val, 0) % 256;
+
+      if (receivedChecksum !== computedChecksum) {
+        console.warn("Checksum incorrecto");
+        return;
+      }
+
+      // reconstruir valores
+      let xHigh = dataBytes[0];
+      let xLow = dataBytes[1];
+      let yHigh = dataBytes[2];
+      let yLow = dataBytes[3];
+
+      // big-endian porque usamos '>2h2B'
+      let rawX = (xHigh << 8) | (xLow & 0xFF);
+      let rawY = (yHigh << 8) | (yLow & 0xFF);
+
+      // convertir a signed 16-bit
+      if (rawX & 0x8000) rawX = rawX - 0x10000;
+      if (rawY & 0x8000) rawY = rawY - 0x10000;
+
+      microBitX = rawX;
+      microBitY = rawY;
+      buttonA = dataBytes[4] === 1;
+      buttonB = dataBytes[5] === 1;
+    }
+  }
+}
 ```
-Esto me sucedía porque estaba leyendo los bytes en orden "little-endian", pero el struct.pack los estaba enviando en "big-endian (>)".  
-Ajusté la lectura en p5.js para ensamblar los bytes como big-endian:  
+y me salieron demasiados cheksum erro, y no se movia nada, porque inclui el byte de encabezado 0xAA. Eso nunca iba a coincidir con el enviado por el micro:bit.
+y corregi solo una linea, y todo me dio mientas se movia 
+
 ``` js
-let rawX = (xHigh << 8) | (xLow & 0xFF);
-let rawY = (yHigh << 8) | (yLow & 0xFF);
-```  
-<img width="1903" height="993" alt="image" src="https://github.com/user-attachments/assets/9049ebbb-10d1-4614-a6e8-b47bfff199ae" />
+      let dataBytes = packet.slice(1, 7);
+```
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/303013eb-2bae-448f-9b4d-549d8523d3e9" />
+
+
+Primero quise observar que todo este en su lugar y nada genere error, tanto en el eje X, como en el eje Y, que funcione el boton A y el boton B
+observe de manera lenta que los círculos en pantalla aumentaba o disminuía progresivamente.
+
+Luego:
+Moví el micro:bit rápidamente de izquierda a derecha. círculos fluctuaban fuerte pero el programa no se congelaba.  
+
+Cada vez que presionaba el botón A, la semilla aleatoria cambiaba y los patrones de los círculos se reorganizaban en toda la cuadrícula. Revisé en consola y se confirmaba que buttonA = 1 llegaba bien en el paquete. Luego, cuando apretaba el botón B, automáticamente se guardaba el canvas como imagen.
+
+### Aprendizaje 
+Particularmente tuve problemas con el cheksum y pude aprender un poco mas de eso:
+
+El checksum es como una forma de revisar que los datos que manda el micro:bit lleguen completos y sin errores. Básicamente, el micro:bit suma los valores del paquete y manda ese resultado, y en mi código yo vuelvo a hacer la suma para ver si coincide. Si no coincide, sale el mensaje de “checksum incorrecto”.
+
+Al principio me asusté porque pensé que eso significaba que el programa estaba dañado, pero en realidad lo que hace es avisar que llegó basura o que el paquete no se leyó bien. O sea, no es que todo esté mal, sino que el checksum me protege de usar datos malos.  
+
+Siendo este el codigo final:
+``` js
+/**
+ * GRID + micro:bit (datos binarios)
+ * 
+ * Acelerómetro x : cantidad y tamaño de círculos
+ * Acelerómetro y : posición
+ * Botón A        : random position
+ * Botón B        : save png
+ */
+
+'use strict';
+
+let tileCountX = 10;
+let tileCountY = 10;
+let tileWidth = 0;
+let tileHeight = 0;
+
+let circleCount = 0;
+let endSize = 0;
+let endOffset = 0;
+
+let actRandomSeed = 0;
+
+// ----- micro:bit -----
+let port;
+let connectBtn;
+let microBitX = 0;
+let microBitY = 0;
+let buttonA = false;
+let buttonB = false;
+
+let prevButtonA = false;
+let prevButtonB = false;
+
+let state = "WAIT_MICROBIT_CONNECTION";
+
+// buffer temporal para reconstruir los paquetes
+let packetBuffer = [];
+
+function setup() {
+  createCanvas(800, 800);
+  tileWidth = width / tileCountX;
+  tileHeight = height / tileCountY;
+  noFill();
+  stroke(0, 128);
+
+  // Conexión con micro:bit
+  port = createSerial();
+  connectBtn = createButton("Conectar micro:bit");
+  connectBtn.mousePressed(connectToMicrobit);
+
+  connectBtn.position(width / 2 - connectBtn.width / 2, height / 2 + 50);
+}
+
+function draw() {
+  if (state === "WAIT_MICROBIT_CONNECTION") {
+    background(220);
+    textAlign(CENTER, CENTER);
+    textSize(24);
+    text("Conecta el micro:bit para comenzar", width / 2, height / 2);
+    connectBtn.show();
+    return;
+  }
+
+  connectBtn.hide();
+
+  // procesar datos binarios
+  if (port.opened() && port.availableBytes() > 0) {
+    readBinaryPacket();
+  }
+
+  // Estado RUNNING
+  background(255);
+  randomSeed(actRandomSeed);
+
+  translate(tileWidth / 2, tileHeight / 2);
+
+  circleCount = int(map(microBitX, -1024, 1024, 1, 20));
+  endSize = map(microBitX, -1024, 1024, tileWidth / 2, 0);
+  endOffset = map(microBitY, -1024, 1024, 0, (tileWidth - endSize) / 2);
+
+  for (let gridY = 0; gridY < tileCountY; gridY++) {
+    for (let gridX = 0; gridX < tileCountX; gridX++) {
+      push();
+      translate(tileWidth * gridX, tileHeight * gridY);
+      scale(1, tileHeight / tileWidth);
+
+      let toggle = int(random(0, 4));
+      if (toggle == 0) rotate(-HALF_PI);
+      if (toggle == 1) rotate(0);
+      if (toggle == 2) rotate(HALF_PI);
+      if (toggle == 3) rotate(PI);
+
+      for (let i = 0; i < circleCount; i++) {
+        let diameter = map(i, 0, circleCount, tileWidth, endSize);
+        let offset = map(i, 0, circleCount, 0, endOffset);
+        ellipse(offset, 0, diameter, diameter);
+      }
+      pop();
+    }
+  }
+
+  if (buttonA && !prevButtonA) {
+    actRandomSeed = random(100000);
+  }
+  if (buttonB && !prevButtonB) {
+    saveCanvas("microbit_grid", "png");
+  }
+
+  prevButtonA = buttonA;
+  prevButtonB = buttonB;
+}
+
+function connectToMicrobit() {
+  if (!port.opened()) {
+    port.open("MicroPython", 115200);
+    state = "RUNNING";
+  } else {
+    port.close();
+    state = "WAIT_MICROBIT_CONNECTION";
+    connectBtn.html("Conectar micro:bit");
+  }
+}
+
+function readBinaryPacket() {
+  while (port.availableBytes() > 0) {
+    let byte = port.readByte();
+
+    if (byte === -1) return; // no data
+
+    packetBuffer.push(byte);
+
+    // buscar encabezado
+    if (packetBuffer[0] !== 0xAA) {
+      packetBuffer.shift();
+      continue;
+    }
+
+    // esperar paquete completo
+    if (packetBuffer.length >= 8) {
+      let packet = packetBuffer.slice(0, 8);
+      packetBuffer = [];
+
+      // verificar checksum
+      let dataBytes = packet.slice(1, 7);
+      let receivedChecksum = packet[7];
+      let computedChecksum = dataBytes.reduce((acc, val) => acc + val, 0) % 256;
+
+      if (receivedChecksum !== computedChecksum) {
+        console.warn("Checksum incorrecto");
+        return;
+      }
+
+      // reconstruir valores
+      let xHigh = dataBytes[0];
+      let xLow = dataBytes[1];
+      let yHigh = dataBytes[2];
+      let yLow = dataBytes[3];
+
+      // big-endian porque usamos '>2h2B'
+      let rawX = (xHigh << 8) | (xLow & 0xFF);
+      let rawY = (yHigh << 8) | (yLow & 0xFF);
+
+      // convertir a signed 16-bit
+      if (rawX & 0x8000) rawX = rawX - 0x10000;
+      if (rawY & 0x8000) rawY = rawY - 0x10000;
+
+      microBitX = rawX;
+      microBitY = rawY;
+      buttonA = dataBytes[4] === 1;
+      buttonB = dataBytes[5] === 1;
+    }
+  }
+}
+
+```
