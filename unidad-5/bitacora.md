@@ -43,7 +43,7 @@ Este sistema es útil porque es claro y humano-legible: cualquiera puede abrir u
 
 En pocas palabras, se priorizó la claridad sobre la eficiencia. En un proyecto académico como este o experimental esto funciona muy bien, porque es más sencillo aprender y depurar. Pero en proyectos que requieran rapidez o grandes volúmenes de datos, se haría evidente que esta estructura no es la más óptima.  
 
-#### Duda:  
+#### Duda:  <a name="cp1"></a>
 ¿Qué pasaría si quisiera enviar más información, como los tres ejes completos del acelerómetro (X, Y, Z)?    
   - Respuesta: 
     Si quisiera enviar los tres ejes del acelerómetro (X, Y y Z) usando ASCII, lo que tendría que hacer es ampliar la cadena de texto. En lugar de solo dos valores separados por comas, el mensaje quedaría algo así:
@@ -88,7 +88,7 @@ En conclusión, draw() no es solo un lugar para dibujar, sino también un espaci
 #### Dudas:   
 - ¿Qué ocurriría si por error el micro:bit enviara cinco valores en vez de cuatro? ¿El sketch los ignoraría, se dañaría la animación o debería implementar un sistema más robusto de validación?  
     - Respuesta:  
-      Si el micro:bit llegara a mandar cinco valores en lugar de cuatro, el programa en p5.js se confundiría porque está preparado solo para recibir cuatro. Al hacer el split(","), se generarían más partes de las que el código                     espera y ahí se podría dañar la animación o usar datos equivocados. Básicamente, el quinto valor quedaría sobrando y no tendría a dónde ir.
+      Si el micro:bit llegara a mandar cinco valores en lugar de cuatro, el programa en p5.js se confundiría porque está preparado solo para recibir cuatro. Al hacer el split(","), se generarían más partes de las que el código espera y ahí se podría dañar la animación o usar datos equivocados. Básicamente, el quinto valor quedaría sobrando y no tendría a dónde ir.
       Para evitar eso, lo mejor es poner una condición que revise si realmente llegaron exactamente cuatro valores antes de procesarlos. Si no se cumple, simplemente se ignora ese paquete y así el programa no se rompe.
       
       ``` js
@@ -188,8 +188,14 @@ function updateButtonStates(newAState, newBState) {
 <img width="1918" height="937" alt="image" src="https://github.com/user-attachments/assets/277e9abb-df2d-40ea-a488-e8ad51ad0558" />
 <img width="1918" height="932" alt="image" src="https://github.com/user-attachments/assets/c8080c4b-e7cf-491f-afc4-ff358cf58ae9" />
 
+### Dudas
+- ¿Qué pasaría si en lugar de usar delimitadores para separar datos, se usara un tamaño fijo para cada valor?
+  Si todo tuviera un tamaño fijo sería más fácil leer y decodificar porque ya sabes dónde empieza y termina cada dato. El problema es que puede desperdiciar         espacio si los números son muy pequeños o que se quede corto si uno es demasiado grande. Entonces, ¿vale la pena sacrificar flexibilidad por simplicidad?
 
-## Actividad 2  
+- ¿Cómo cambiaría la complejidad del sistema si además de los datos incluyera un checksum o un byte de validación?
+  Tener un checksum haría que el sistema fuera más robusto porque podría detectar si algo se dañó en la transmisión. Pero al mismo tiempo se agregan más pasos       para calcularlo y verificarlo. Es como más seguro pero también más trabajo. Entonces uno se pregunta: ¿qué pesa más, la seguridad o la simplicidad?
+  
+## Actividad 3
 
 ### ¿Por qué se ve este resultado?
 <img width="1233" height="552" alt="image" src="https://github.com/user-attachments/assets/291af6f7-14cb-4e74-90a1-51cfda9efa55" />  
@@ -770,18 +776,12 @@ function readBinaryPacket() {
 
 ```
 --- 
-## Valoración:
-En mi bitácora considero que mi trabajo merece una calificación de 5.0, ya que cumplí con todos los criterios establecidos en la rúbrica.
-
-- Comprensión de los contenidos: Evidencié una lectura crítica y profunda de los materiales propuestos en la unidad. No solo resumí las ideas principales, sino que también relacioné los conceptos con ejemplos y reflexiones propias, lo cual demuestra una apropiación real del tema.
-
-- Calidad de los ejercicios y actividades: Realicé todas las actividades con claridad y precisión, mostrando tanto el proceso como los resultados. En cada caso, expliqué detalladamente las decisiones tomadas y cómo estas se relacionan con los objetivos de la unidad.
-
-- Evidencia de aprendizaje autónomo: Indge en el tema generando dudas  adicionales y conexiones que van más allá del material entregado, lo que refleja una búsqueda personal de comprensión y una ampliación de los conocimientos.
-
-- Organización y presentación: La bitácora se encuentra bien estructurada, con entradas ordenadas y coherentes, lo que facilita la lectura y comprensión. Además, cuidé la redacción, ortografía y presentación visual, asegurando que el documento tuviera calidad académica.
-
-- Reflexión crítica: Más allá de responder lo solicitado, incluí reflexiones personales que permiten evidenciar cómo estos aprendizajes se conectan con mi formación y con contextos más amplios, mostrando una mirada analítica y no solo descriptiva.
-
-Por estas razones, considero que el trabajo cumple de manera excelente con los criterios de la rúbrica, y por tanto, la valoración justa para esta unidad es 5.0.
+### Rubrica 
+| Item | Nota | Justificación |
+| --- | --- | --- |
+| **1. Profundidad de la Indagación** | 5.0 | Con base en lo trabajado en la bitácora, se evidencia una exploración crítica sobre cómo el micro:bit envía y organiza los datos, qué ventajas y limitaciones tiene el uso de ASCII y cómo se interpretan estos mensajes en p5.js. No solo se describió la estructura del protocolo, también se plantearon escenarios que ponen a prueba su diseño, como el envío de más valores de los previstos, la llegada de datos incompletos o la posibilidad de agregar validaciones extra como checksums. Estas preguntas llamadas dudas que están a lo largo del documento y respuestas muestran una reflexión sobre las implicaciones de la comunicación de datos: claridad frente a eficiencia, simplicidad frente a robustez, y flexibilidad frente a seguridad. En conjunto, las evidencias justifican que se alcanzó un nivel alto en la indagación, ya que se analizaron no solo los aspectos técnicos inmediatos, sino también las posibles consecuencias y decisiones de diseño que surgen en sistemas de transmisión de información. [ejemplo](#cp1)  |
+| **2. Calidad de la Experimentación** | 5.0 | En esta bitácora se nota que no solo probé si el sistema funcionaba, sino que busqué entender por qué fallaba. El error con el checksum me obligó a diseñar un “mini experimento”: al inicio todo marcaba error porque estaba sumando también el byte del encabezado, algo que nunca iba a coincidir con lo enviado por el micro:bit. Para comprobarlo, dejé el código tal cual y observé cómo se repetía el fallo una y otra vez, mostrando “checksum incorrecto” en consola. Ese comportamiento constante fue la evidencia que me permitió aislar el problema y luego validar la solución cambiando solo una línea (`packet.slice(1, 7)`). Al corregirlo, los círculos empezaron a moverse y los botones respondían bien, confirmando que el framing y la verificación de datos estaban funcionando como debían. |
+| **3. Análisis y Reflexión** | 5.0 | no me quedaste en describir lo que pasa técnicamente, sino que fui más allá y reflexione sobre las ventajas y desventajas de cada forma de transmisión (ASCII vs binario). Mostre que entiendo no solo “qué hace el código”, sino también los compromisos detrás de esas decisiones: legibilidad contra eficiencia, simplicidad contra robustez. Además, construí una visión completa del proceso, desde que el micro:bit empaqueta los datos hasta que p5.js los interpreta, validando y transformando la información. Eso demuestra un modelo mental sólido del flujo de datos y una reflexión crítica que conecta teoría con práctica, justo lo que pide el nivel más alto de la rúbrica. |
+| **4. Apropiación y Articulación de Conceptos** | 5.0 | cumple con este criterio porque no me limité a describir los ejercicios, sino que expliqué los conceptos como un sistema interdependiente. Mostré cómo la comunicación serial funciona como un flujo de bytes asíncrono que, en apariencia, puede ser caótico, pero al aplicar un protocolo se organiza para garantizar orden, confiabilidad y eficiencia. Además, utilicé analogías propias que me permitieron articular estas ideas de forma clara, evidenciando que entendí no solo el funcionamiento, sino también la lógica detrás de este proceso. |
+| Promedio | 5.0 |  |
 
