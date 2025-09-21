@@ -46,15 +46,6 @@ Algo que quiero resaltar es que hubo momentos de frustración cuando no me funci
 # Correción del apply
 
 ## correción actividad 6  
-# Bomba 2.0 en p5.js
-
-Este proyecto implementa una bomba utilizando la **técnica de máquinas de estado**.  
-El funcionamiento se basa en tres estados principales:
-
-- **CONFIG** → Ajuste del temporizador (usando teclas simulando botones del micro:bit).  
-- **ARMED** → La bomba está armada y comienza la cuenta regresiva.  
-- **EXPLODED** → La bomba explota visualmente al finalizar el tiempo.  
-
 ## Código fuente
 
 ```javascript
@@ -141,4 +132,172 @@ function keyPressed() {
     } else if (key === 's') { // Shake
       current_state = STATE_ARMED;
       countdown_time = timer_valu
+
+````
+## Actividad 7  
+
+### Codigo p5.js  
+```javascript
+// ------------------------------
+// 1. Definir estados
+const STATE_CONFIG = 0;
+const STATE_ARMED = 1;
+const STATE_EXPLODED = 2;
+
+// ------------------------------
+// 2. Variables globales
+let current_state = STATE_CONFIG;
+
+let timer_value = 20;   // Tiempo inicial
+let min_time = 10;
+let max_time = 60;
+
+let countdown_time = 0; 
+let last_time = 0;  
+
+// Serial
+let port;
+let connectBtn;
+let connectionInitialized = false;
+let serialInput = "";
+
+// ------------------------------
+// 3. Funciones auxiliares
+
+function show_time(t) {
+  textSize(48);
+  textAlign(CENTER, CENTER);
+  fill(255);
+  text(t, width / 2, height / 2);
+}
+
+function explode() {
+  background(255, 0, 0);
+  textSize(64);
+  text("💀", width / 2, height / 2);
+}
+
+// ------------------------------
+// 4. Configuración inicial
+function setup() {
+  createCanvas(400, 400);
+  last_time = millis();
+
+  // Puerto serial
+  port = createSerial();
+  connectBtn = createButton("Conectar micro:bit");
+  connectBtn.position(20, height + 20);
+  connectBtn.mousePressed(connectBtnClick);
+}
+
+// ------------------------------
+// 5. Lógica principal
+function draw() {
+  background(0);
+
+  // Leer datos del micro:bit
+  if (port.opened()) {
+    let str = port.readUntil("\n");
+    if (str.length > 0) {
+      serialInput = str.trim();
+      console.log("Recibido:", serialInput);
+      handleSerialInput(serialInput);
+    }
+  }
+
+  if (current_state === STATE_CONFIG) {
+    show_time(timer_value);
+
+  } else if (current_state === STATE_ARMED) {
+    let current_time = millis();
+    if (current_time - last_time >= 1000) {
+      countdown_time--;
+      last_time = current_time;
+    }
+
+    if (countdown_time > 0) {
+      show_time(countdown_time);
+    } else {
+      explode();
+      current_state = STATE_EXPLODED;
+    }
+
+  } else if (current_state === STATE_EXPLODED) {
+    explode();
+  }
+
+  // Botón de conexión
+  if (!port.opened()) {
+    connectBtn.html("Conectar micro:bit");
+  } else {
+    connectBtn.html("Desconectar");
+  }
+}
+
+// ------------------------------
+// 6. Manejo de mensajes seriales
+function handleSerialInput(cmd) {
+  if (current_state === STATE_CONFIG) {
+    if (cmd === "A") {
+      timer_value = min(timer_value + 1, max_time);
+    } else if (cmd === "B") {
+      timer_value = max(timer_value - 1, min_time);
+    } else if (cmd === "S") {
+      current_state = STATE_ARMED;
+      countdown_time = timer_value;
+      last_time = millis();
+    }
+  } else if (current_state === STATE_EXPLODED && cmd === "T") {
+    current_state = STATE_CONFIG;
+    timer_value = 20;
+  }
+}
+
+// ------------------------------
+// 7. Botón conectar/desconectar
+function connectBtnClick() {
+  if (!port.opened()) {
+    port.open("MicroPython", 115200);
+    connectionInitialized = false;
+  } else {
+    port.close();
+  }
+}
+
+````
+
+### Codigo micro:bit:  
+
+```javascript
+from microbit import *
+import utime
+
+# Inicializar UART (debe coincidir con el baudrate de p5.js)
+uart.init(baudrate=115200)
+
+while True:
+    # Botón A -> aumentar tiempo
+    if button_a.was_pressed():
+        uart.write("A\n")
+
+    # Botón B -> disminuir tiempo
+    if button_b.was_pressed():
+        uart.write("B\n")
+
+    # Movimiento shake -> iniciar cuenta regresiva
+    if accelerometer.was_gesture("shake"):
+        uart.write("S\n")
+
+    # A+B juntos -> reiniciar (manda "T")
+    if button_a.is_pressed() and button_b.is_pressed():
+        uart.write("T\n")
+        # Espera a que sueltes ambos botones para evitar repeticiones
+        while button_a.is_pressed() and button_b.is_pressed():
+            utime.sleep_ms(50)
+
+    utime.sleep_ms(100)  # pausa para no saturar el puerto
+````
+
+### Enlace:  
+https://editor.p5js.org/mafora12/sketches/olxFIgs4u 
 
