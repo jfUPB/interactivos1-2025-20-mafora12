@@ -42,3 +42,103 @@ Yo lo pondría en un 4, porque no es imposible, pero sí requiere mucha atenció
 - Comentario adicional:  
 Algo que quiero resaltar es que hubo momentos de frustración cuando no me funcionaba algo que parecía lógico, pero también tuve esos momentos de “¡Aha!” cuando encontré el error. Ver el proyecto funcionando fue muy satisfactorio, porque entendí que pensar en estados es como armar un rompecabezas: todo encaja si lo haces paso a paso.
 
+
+# Correción del apply
+
+## correción actividad 6  
+# Bomba 2.0 en p5.js
+
+Este proyecto implementa una bomba utilizando la **técnica de máquinas de estado**.  
+El funcionamiento se basa en tres estados principales:
+
+- **CONFIG** → Ajuste del temporizador (usando teclas simulando botones del micro:bit).  
+- **ARMED** → La bomba está armada y comienza la cuenta regresiva.  
+- **EXPLODED** → La bomba explota visualmente al finalizar el tiempo.  
+
+## Código fuente
+
+```javascript
+// ------------------------------
+// 1. Definir estados
+const STATE_CONFIG = 0;
+const STATE_ARMED = 1;
+const STATE_EXPLODED = 2;
+
+// ------------------------------
+// 2. Variables globales
+let current_state = STATE_CONFIG;
+
+let timer_value = 20;   // Tiempo inicial
+let min_time = 10;
+let max_time = 60;
+
+let countdown_time = 0; 
+let last_time = 0;  // Usar millis() en vez de utime
+
+// ------------------------------
+// 3. Funciones auxiliares
+
+// Mostrar tiempo en pantalla
+function show_time(t) {
+  textSize(48);
+  textAlign(CENTER, CENTER);
+  fill(255);
+  text(t, width / 2, height / 2);
+}
+
+// Explosión visual
+function explode() {
+  background(255, 0, 0);     // Fondo rojo
+  textSize(64);
+  text("💀", width / 2, height / 2);
+}
+
+// ------------------------------
+// 4. Configuración inicial
+function setup() {
+  createCanvas(400, 400);  // Lienzo
+  last_time = millis();    // Guardar tiempo inicial
+}
+
+// ------------------------------
+// 5. Lógica principal (máquina de estados)
+function draw() {
+  background(0);  // Fondo negro cada frame
+
+  if (current_state === STATE_CONFIG) {
+    // Estado de configuración
+    show_time(timer_value);
+
+  } else if (current_state === STATE_ARMED) {
+    // Estado armado: cuenta regresiva
+    let current_time = millis();
+    if (current_time - last_time >= 1000) {
+      countdown_time--;
+      last_time = current_time;
+    }
+
+    if (countdown_time > 0) {
+      show_time(countdown_time);
+    } else {
+      explode();
+      current_state = STATE_EXPLODED;
+    }
+
+  } else if (current_state === STATE_EXPLODED) {
+    // Estado explotado
+    explode();
+  }
+}
+
+// ------------------------------
+// 6. Eventos de teclado (simulan botones/gestos del micro:bit)
+function keyPressed() {
+  if (current_state === STATE_CONFIG) {
+    if (key === 'a') { // Botón A
+      timer_value = min(timer_value + 1, max_time);
+    } else if (key === 'b') { // Botón B
+      timer_value = max(timer_value - 1, min_time);
+    } else if (key === 's') { // Shake
+      current_state = STATE_ARMED;
+      countdown_time = timer_valu
+
