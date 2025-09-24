@@ -25,4 +25,28 @@ Al abrir page1 y page2, la terminal mostró la conexión de cada usuario con su 
 
 ### 5. Describe qué sucede en ambas páginas del navegador cuando mueves una de las ventanas. ¿Cambia algo visualmente? ¿Qué mensajes aparecen (si los hay) en la consola del navegador (usualmente accesible con F12 -> Pestaña Consola) y en la terminal del servidor?   
 Cuanda acerco una de las paginas estas se conectan y la distancia de la linea se acorta y si la pongo una encima de la otra se vuelve un solo circulo si pongo preciso en su centro, si no solo la línea que las une se vuelve corta.  
-En la consola primero aparece la conección del cliente, aparece que no esta sincronizado, luego recibe los datos del servidor que son los valores de los circulos posición alto y ancho y finalmente confirma que ya está sincronizado.
+En la consola primero aparece la conección del cliente, aparece que no esta sincronizado, luego recibe los datos del servidor que son los valores de los circulos posición alto y ancho y finalmente confirma si está o no sincronizado.
+
+## Actividad 2
+
+### 1. ¿Qué pasaría si esa rampa se corta? Anota tus ideas.   
+- No habría acceso a Internet o mi vehículo no podría entrar a la carretera y me quedaría aislada desde el dispositivo que este usando, aunque todo lo demás funcione.  
+- Perdería la comunicación en tiempo real con otras personas.  
+- solo podria usar apps sin conexión.
+
+### 2. ¿Puedes identificar otros ejemplos de relaciones Cliente-Servidor en tu vida diaria (no necesariamente digitales)? Por ejemplo, al pedir comida en un restaurante. ¿Quién es el cliente y quién el servidor? ¿Qué se pide y qué se entrega?  
+- cajero Automatico
+     - Cliente: la persona con su tarjeta.
+     - Servidor: el cajero automático conectado al banco.
+     - Se pide: dinero
+     - Se entrega: la información, respuestas y el monto solicitado.
+- Hotel:
+     - Cliente: el huésped.
+     - Servidor: la recepción/servicio de habitaciones.
+     - Se pide: hospedaje, comida o limpieza.
+     - Se entrega: la habitación, los servicios solicitados.
+  - Cine:
+     - Cliente: el espectador.
+     - Servidor: la taquilla o boletería.
+     - Se pide: una entrada para la película.
+     - Se entrega: el tiquete o código de acceso.
