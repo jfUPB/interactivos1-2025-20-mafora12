@@ -35,18 +35,19 @@ En la consola primero aparece la conección del cliente, aparece que no esta sin
 - solo podria usar apps sin conexión.
 
 ### 2. ¿Puedes identificar otros ejemplos de relaciones Cliente-Servidor en tu vida diaria (no necesariamente digitales)? Por ejemplo, al pedir comida en un restaurante. ¿Quién es el cliente y quién el servidor? ¿Qué se pide y qué se entrega?  
-- cajero Automatico
-     - Cliente: la persona con su tarjeta.
-     - Servidor: el cajero automático conectado al banco.
-     - Se pide: dinero
-     - Se entrega: la información, respuestas y el monto solicitado.
-- Hotel:
-     - Cliente: el huésped.
-     - Servidor: la recepción/servicio de habitaciones.
-     - Se pide: hospedaje, comida o limpieza.
-     - Se entrega: la habitación, los servicios solicitados.
-  - Cine:
-     - Cliente: el espectador.
-     - Servidor: la taquilla o boletería.
-     - Se pide: una entrada para la película.
-     - Se entrega: el tiquete o código de acceso.
+- cajero Automatico:  
+     - Cliente: la persona con su tarjeta.  
+     - Servidor: el cajero automático conectado al banco.  
+     - Se pide: dinero.  
+     - Se entrega: la información, respuestas y el monto solicitado.  
+- Hotel:  
+     - Cliente: el huésped.  
+     - Servidor: la recepción/servicio de habitaciones.  
+     - Se pide: hospedaje, comida o limpieza.  
+     - Se entrega: la habitación, los servicios solicitados.  
+  - Cine:  
+     - Cliente: el espectador.  
+     - Servidor: la taquilla o boletería.  
+     - Se pide: una entrada para la película.  
+     - Se entrega: el tiquete o código de acceso.  
+
