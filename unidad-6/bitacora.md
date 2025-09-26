@@ -107,3 +107,46 @@ Usar JavaScript tanto en el cliente como en el servidor es muy útil porque unif
 #### Resume con tus propias palabras la diferencia fundamental entre una comunicación HTTP tradicional y una comunicación usando WebSockets/Socket.IO. ¿En qué tipo de aplicaciones has visto o podrías imaginar que se usa esta comunicación en tiempo real?  
 La diferencia principal es que en la comunicación HTTP tradicional el cliente siempre tiene que pedir algo y el servidor responder, como un ida y vuelta por mensaje; en cambio, con WebSockets/Socket.IO se establece una conexión continua en la que ambos pueden enviarse datos de manera instantánea sin esperar una nueva petición. Este tipo de comunicación en tiempo real se usa, por ejemplo, en aplicaciones de chat, videollamadas, juegos en línea, o incluso en plataformas colaborativas como Google Docs, donde varias personas pueden ver cambios al mismo tiempo.  
 
+## Actividad 3  
+### Experimento 1  
+<img width="1037" height="1026" alt="image" src="https://github.com/user-attachments/assets/0951fe27-ca2e-44f6-9973-4e4ea34bcb4b" />
+<img width="1033" height="1027" alt="image" src="https://github.com/user-attachments/assets/de8d3ec1-3031-4aa2-af21-9db5f685c28a" />
+
+Esto me muestra que el servidor relaciona cada URL con una respuesta específica. Si cambio la ruta de /page1 a /pagina_uno, la dirección anterior deja de funcionar porque ya no está definida. Solo al escribir la nueva ruta en el navegador (/pagina_uno) el servidor reconoce la petición y responde. En otras palabras, el servidor depende de cómo se configuren esas rutas para saber qué mostrar.  
+
+### Experimento 2
+<img width="1912" height="1032" alt="image" src="https://github.com/user-attachments/assets/72a8424e-6aec-476f-8ac7-ea7253856b3d" />  
+ID:aqcgib2Zq4C4zZ8yAAAB  
+<img width="1918" height="1032" alt="image" src="https://github.com/user-attachments/assets/104b0898-2754-485b-9190-3fda7d3f28b9" />  
+El ID es diferente el de la page 2 es  7_Dw-RxtGJCNrB0TAAAJ
+
+Al desconectar la page 1, aparece este mensaje 
+<img width="1025" height="813" alt="image" src="https://github.com/user-attachments/assets/00672c0b-8587-47fc-b88c-db59ec6034b6" />
+SI coinciden los ID
+<img width="730" height="578" alt="image" src="https://github.com/user-attachments/assets/d7fe505a-dc2e-4f27-97b6-aae95334d8dc" />
+Este es el mensaje que aparece al cerrar ambas paginas  
+
+### Experimento 3  
+<img width="1902" height="1016" alt="image" src="https://github.com/user-attachments/assets/bb0cc9ac-2cdb-484b-b9ac-a4de0c6a22f2" />  
+Se está registrando el evento winUpdate uno y dos, que es el que se encarga de enviar la información de los cambios del cliente. Los datos que aparecen (Data:) muestran valores como la posición en x y y, además del ancho y el alto de la ventana. Por ejemplo, se ven números como x: 835, y: 4, width: 8, height: 770. Esto me indica que cada vez que algo cambia en la ventana, el servidor guarda y comparte esos datos para mantener todo sincronizado.  
+
+<img width="1905" height="1012" alt="image" src="https://github.com/user-attachments/assets/89237a90-37ab-4037-ba66-7f90388e48c1" />  
+Al mover la ventana de page2, en la terminal se está registrando el evento win2update. Los datos (Data:) que aparecen muestran cómo cambian las coordenadas de la ventana, con valores en x y y, además del ancho y alto. Esto indica que cada vez que la ventana de page2 se mueve, se actualiza su posición en la terminal mostrando la nueva ubicación junto con sus dimensiones.
+
+<img width="1917" height="1078" alt="image" src="https://github.com/user-attachments/assets/23cc9ac0-fe07-44f0-9b33-7d6419da365d" />  
+<img width="1602" height="582" alt="image" src="https://github.com/user-attachments/assets/859a7510-ad10-46d5-a2f2-5b32888d914b" />
+
+Al hacer el cambio de línea la page1 no actualiza creando un daño en esa conexión que habia entre pages. 
+Cuando uso "socket.emit", el servidor responde únicamente al mismo cliente que mandó el evento (no comparte la info con los demás), en cambio "socket.broadcast.emit" envía ese mismo dato a todos los demás clientes conectados excepto el que lo originó, lo que permite que todos se mantengan sincronizados entre sí.
+
+### Experimento 4  
+<img width="721" height="401" alt="image" src="https://github.com/user-attachments/assets/49096004-7b9d-4c51-bcb4-a8096b331a15" />  
+Esta escuchando el puerto 3001, y si abro en mi web el http://localhost:3000 me genera un error
+<img width="1032" height="1066" alt="image" src="https://github.com/user-attachments/assets/4b881ee4-8321-420f-80ca-8cf7995318b3" />  
+Pero si abro la 3001, si me deja abrir el page 
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/7ef72fd5-9a34-4cb2-b610-f9492ec827b7" />  
+
+#### Aprendizaje   
+Aprendí que la variable port define en qué puerto se va a ejecutar el servidor, y la función listen se encarga de poner el servidor a la escucha en ese puerto para poder recibir conexiones y responder a los clientes.  
+
+## Actividad 4
