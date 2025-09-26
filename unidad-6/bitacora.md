@@ -150,3 +150,17 @@ Pero si abro la 3001, si me deja abrir el page
 Aprendí que la variable port define en qué puerto se va a ejecutar el servidor, y la función listen se encarga de poner el servidor a la escucha en ese puerto para poder recibir conexiones y responder a los clientes.  
 
 ## Actividad 4
+### Experimento 1
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/bb4b990d-4848-47fd-b1c6-730f14e171ef" />
+Primero me aparecen en la consola despues de desconectarlo estos errores que significa que como no hay nada escuchando en el 3000, la conexión se rechaza, luego al refrescarlo, aparece esto  
+<img width="1022" height="940" alt="image" src="https://github.com/user-attachments/assets/ea3d41ca-253e-4a5e-97a5-370cf6a218a7" />  
+Que aunque ya no tenga errores pues ya la pagina no esta disponible pq el servidor no esta escuchando.
+<img width="1918" height="1020" alt="image" src="https://github.com/user-attachments/assets/71270e48-5495-4906-8d56-da086ccb72b8" />  
+Desaparecen estos errores y ya la pagina esta esperando su sincronización.
+
+### Experimento 2  
+<img width="1621" height="1078" alt="image" src="https://github.com/user-attachments/assets/45a0f1d8-a112-4bd4-9bed-f856450072e0" />  
+<img width="733" height="428" alt="image" src="https://github.com/user-attachments/assets/486bf686-de4a-48e0-a6a8-02f1c7c93b7c" />  
+Cuando comente la línea que enviaba los datos de page2 al conectarse, deje de mandar automáticamente su información al servidor al abrir la página. Por eso al inicio no se veía ningún win2update. Sin embargo, cuando movi la ventana de page2, esta empezó a enviar sus actualizaciones de posición y tamaño, y el servidor las recibió, manteniendo a los clientes sincronizados. Básicamente, la sincronización sigue funcionando, pero ya no ocurre automáticamente al conectar, solo cuando hay interacción.
+
+
