@@ -1,7 +1,7 @@
 
 # Evidencias de la unidad 6
 
-## Actividad 1   
+## Actividad 1   <a name="actividad 1"></a>
 ### 1. ¿Qué ocurrió en la terminal cuando ejecutaste npm install? ¿Cuál crees que es su propósito?  
 Cuando se ejecuto el comando en git bush se ejecuto la instalación en las dependencias del repositorio   clonado anteriormente. EL mensaje dice que  se añadieron al  repositrio 120 paquetes y verifico 121 en   segundos.  
 En conclusión el mensaje dice que la instalación fue exitosa, no hay errores ni problemas de seguridad.
@@ -27,7 +27,7 @@ Al abrir page1 y page2, la terminal mostró la conexión de cada usuario con su 
 Cuanda acerco una de las paginas estas se conectan y la distancia de la linea se acorta y si la pongo una encima de la otra se vuelve un solo circulo si pongo preciso en su centro, si no solo la línea que las une se vuelve corta.  
 En la consola primero aparece la conección del cliente, aparece que no esta sincronizado, luego recibe los datos del servidor que son los valores de los circulos posición alto y ancho y finalmente confirma si está o no sincronizado.
 
-## Actividad 2  
+## Actividad 2  <a name="actividad 2"></a>
 ### ¿Qué es Internet?  
 #### 1. ¿Qué pasaría si esa rampa se corta? Anota tus ideas.   
 - No habría acceso a Internet o mi vehículo no podría entrar a la carretera y me quedaría aislada desde el dispositivo que este usando, aunque todo lo demás funcione.  
@@ -107,7 +107,7 @@ Usar JavaScript tanto en el cliente como en el servidor es muy útil porque unif
 #### Resume con tus propias palabras la diferencia fundamental entre una comunicación HTTP tradicional y una comunicación usando WebSockets/Socket.IO. ¿En qué tipo de aplicaciones has visto o podrías imaginar que se usa esta comunicación en tiempo real?  
 La diferencia principal es que en la comunicación HTTP tradicional el cliente siempre tiene que pedir algo y el servidor responder, como un ida y vuelta por mensaje; en cambio, con WebSockets/Socket.IO se establece una conexión continua en la que ambos pueden enviarse datos de manera instantánea sin esperar una nueva petición. Este tipo de comunicación en tiempo real se usa, por ejemplo, en aplicaciones de chat, videollamadas, juegos en línea, o incluso en plataformas colaborativas como Google Docs, donde varias personas pueden ver cambios al mismo tiempo.  
 
-## Actividad 3  
+## Actividad 3  <a name="actividad 3"></a>
 ### Experimento 1  
 <img width="1037" height="1026" alt="image" src="https://github.com/user-attachments/assets/0951fe27-ca2e-44f6-9973-4e4ea34bcb4b" />
 <img width="1033" height="1027" alt="image" src="https://github.com/user-attachments/assets/de8d3ec1-3031-4aa2-af21-9db5f685c28a" />
@@ -149,7 +149,7 @@ Pero si abro la 3001, si me deja abrir el page
 #### Aprendizaje   
 Aprendí que la variable port define en qué puerto se va a ejecutar el servidor, y la función listen se encarga de poner el servidor a la escucha en ese puerto para poder recibir conexiones y responder a los clientes.  
 
-## Actividad 4  
+## Actividad 4  <a name="actividad 4"></a>
 ### Experimento 1  
 <img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/bb4b990d-4848-47fd-b1c6-730f14e171ef" />  
 Primero me aparecen en la consola despues de desconectarlo estos errores que significa que como no hay nada escuchando en el 3000, la conexión se rechaza, luego al refrescarlo, aparece esto  
@@ -233,7 +233,7 @@ function draw() {
 }
 ````
 
-## Actividad 5  
+## Actividad 5  <a name="actividad 5"></a>
 ### Idea 
 Respira y brilla 
 
@@ -257,6 +257,7 @@ https://github.com/mafora12/sfi-2025-20-act5
 Final video:   
 
 https://github.com/user-attachments/assets/c10ea073-b124-488f-b3b8-1a02da06fdc5
+
 
 
 
