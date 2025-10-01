@@ -254,5 +254,13 @@ Lo unico que se cambio fue el page1.js y el page2.js
 Link del repositorio:  
 https://github.com/mafora12/sfi-2025-20-act5  
 
+Final video:   
+
+https://github.com/user-attachments/assets/c10ea073-b124-488f-b3b8-1a02da06fdc5
+
+
+
+
+
 
 
