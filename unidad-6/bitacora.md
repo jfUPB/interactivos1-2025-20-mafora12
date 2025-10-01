@@ -233,3 +233,19 @@ function draw() {
 }
 ````
 
+## Actividad 5  
+### Idea 
+Respira y brilla 
+
+El círculo tenga un halo suave. A medida que se acerquen, el brillo no solo crece, sino que cambia de color (de azul frío a amarillo brillante).
+
+Pulso rítmico: Los círculos no se quedan estáticos: su tamaño oscila suavemente (como si inhalaran/exhalaran).
+
+- Cuando están cerca, el pulso se acelera un poquito.
+
+- Cuando están lejos, pulsan más despacio.
+
+Luz ambiental: Además del glow, el fondo también responde. El background va de un gris neutro a un degradado de color luminoso cuando la distancia es corta (como si todo el espacio respirara con ellos).
+
+Efecto de “choque de energía”: Si se acercan demasiado (menos de 50px), ocurre un destello rápido (círculos se vuelven blancos y salen estrellas con destellos del centro).
+
