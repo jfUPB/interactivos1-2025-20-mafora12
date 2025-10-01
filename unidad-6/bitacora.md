@@ -180,4 +180,56 @@ Se hizo un cambio en el codigo:
 Puedo concluir que el código dentro del if solo se ejecuta cuando la ventana realmente cambia de posición o de tamaño, porque esa condición compara los valores actuales con los anteriores y solo entra si encuentra diferencias. Esto demuestra que el programa no está mandando datos todo el tiempo, sino únicamente cuando hay un cambio real.  
 
 ### Expiramento 5  
+El cambio que se dui fue este 
+<img width="1918" height="982" alt="image" src="https://github.com/user-attachments/assets/76b670a5-4d1e-4f76-aae8-7868825e8ba0" />
+Este fue mi pequeño experimento   
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/99a1aa2d-aa7d-46ea-9f06-f82f3a9e7e5b" />
+cambia de color cuando esta encima del circulo y tambíen se reduce su tamaño simulando un ojo  
+```javascript
+function draw() {
+    background(220);
+    
+    if (!isConnected) {
+        showStatus('Conectando al servidor...', color(255, 165, 0));
+        return;
+    }
+    
+    if (!hasRemoteData) {
+        showStatus('Esperando conexión de la otra ventana...', color(255, 165, 0));
+        return;
+    }
+    
+    if (!isFullySynced) {
+        showStatus('Sincronizando datos...', color(255, 165, 0));
+        return;
+    }
+
+    // Solo dibujar cuando esté completamente sincronizado
+    drawCircle(point2[0], point2[1]);
+    checkWindowPosition();
+    
+    let vector2 = createVector(remotePageData.x, remotePageData.y);
+    let vector1 = createVector(currentPageData.x, currentPageData.y);
+    let resultingVector = createVector(vector2.x - vector1.x, vector2.y - vector1.y);
+    
+    // Calculamos la distancia entre los puntos
+    let d = dist(point2[0], point2[1], resultingVector.x + remotePageData.width / 2, resultingVector.y + remotePageData.height / 2);
+    
+    stroke(50);
+    strokeWeight(20);
+
+    // Cambiamos el color del círculo dependiendo de la distancia
+    if (d < 100) { 
+        fill(0, 255, 0);  // Verde
+    } else {
+        fill(255, 0, 0);  // Rojo
+    }
+
+    // Dibujar el círculo
+    ellipse(resultingVector.x + remotePageData.width / 2, resultingVector.y + remotePageData.height / 2, 50, 50);
+
+    // Dibujar la línea
+    line(point2[0], point2[1], resultingVector.x + remotePageData.width / 2, resultingVector.y + remotePageData.height / 2);
+}
+````
 
