@@ -149,18 +149,35 @@ Pero si abro la 3001, si me deja abrir el page
 #### Aprendizaje   
 Aprendí que la variable port define en qué puerto se va a ejecutar el servidor, y la función listen se encarga de poner el servidor a la escucha en ese puerto para poder recibir conexiones y responder a los clientes.  
 
-## Actividad 4
-### Experimento 1
-<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/bb4b990d-4848-47fd-b1c6-730f14e171ef" />
+## Actividad 4  
+### Experimento 1  
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/bb4b990d-4848-47fd-b1c6-730f14e171ef" />  
 Primero me aparecen en la consola despues de desconectarlo estos errores que significa que como no hay nada escuchando en el 3000, la conexión se rechaza, luego al refrescarlo, aparece esto  
 <img width="1022" height="940" alt="image" src="https://github.com/user-attachments/assets/ea3d41ca-253e-4a5e-97a5-370cf6a218a7" />  
-Que aunque ya no tenga errores pues ya la pagina no esta disponible pq el servidor no esta escuchando.
+Que aunque ya no tenga errores pues ya la pagina no esta disponible pq el servidor no esta escuchando.  
 <img width="1918" height="1020" alt="image" src="https://github.com/user-attachments/assets/71270e48-5495-4906-8d56-da086ccb72b8" />  
-Desaparecen estos errores y ya la pagina esta esperando su sincronización.
+Desaparecen estos errores y ya la pagina esta esperando su sincronización.  
 
-### Experimento 2  
+### Experimento 2   
 <img width="1621" height="1078" alt="image" src="https://github.com/user-attachments/assets/45a0f1d8-a112-4bd4-9bed-f856450072e0" />  
-<img width="733" height="428" alt="image" src="https://github.com/user-attachments/assets/486bf686-de4a-48e0-a6a8-02f1c7c93b7c" />  
-Cuando comente la línea que enviaba los datos de page2 al conectarse, deje de mandar automáticamente su información al servidor al abrir la página. Por eso al inicio no se veía ningún win2update. Sin embargo, cuando movi la ventana de page2, esta empezó a enviar sus actualizaciones de posición y tamaño, y el servidor las recibió, manteniendo a los clientes sincronizados. Básicamente, la sincronización sigue funcionando, pero ya no ocurre automáticamente al conectar, solo cuando hay interacción.
+<img width="733" height="428" alt="image" src="https://github.com/user-attachments/assets/486bf686-de4a-48e0-a6a8-02f1c7c93b7c" />    
 
+Cuando comente la línea que enviaba los datos de page2 al conectarse, deje de mandar automáticamente su información al servidor al abrir la página. Por eso al inicio no se veía ningún win2update. Sin embargo, cuando movi la ventana de page2, esta empezó a enviar sus actualizaciones de posición y tamaño, y el servidor las recibió, manteniendo a los clientes sincronizados. Básicamente, la sincronización sigue funcionando, pero ya no ocurre automáticamente al conectar, solo cuando hay interacción.  
+
+### Experimento 3  
+<img width="1917" height="1006" alt="image" src="https://github.com/user-attachments/assets/3873e39d-472e-4be2-b849-2c940016fcfd" />   
+Se movio la pagina 1 y la información de posición se mostro en la pagina 2 y al contrario  
+<img width="1918" height="1012" alt="image" src="https://github.com/user-attachments/assets/f3f63a76-34e3-4155-b380-e11c3e1fd012" />  
+se mostraron los datos en la pag1  
+Esto sucede porque el servidor es el que transmite la información entre las páginas: una página manda los datos y el servidor se encarga de enviárselos a la otra. Por eso los cambios solo se ven reflejados en la consola de la página opuesta, y no en la misma desde donde se hacen.  
+
+### Experimento 4  
+<img width="1918" height="1078" alt="image" src="https://github.com/user-attachments/assets/1eaa3733-46c6-480b-858f-5333f80b6458" />  
+Se hizo un cambio en el codigo:  
+
+<img width="1590" height="1078" alt="image" src="https://github.com/user-attachments/assets/dceee662-747f-421b-9f67-f0bd8908db6d" />  
+
+Puedo concluir que el código dentro del if solo se ejecuta cuando la ventana realmente cambia de posición o de tamaño, porque esa condición compara los valores actuales con los anteriores y solo entra si encuentra diferencias. Esto demuestra que el programa no está mandando datos todo el tiempo, sino únicamente cuando hay un cambio real.  
+
+### Expiramento 5  
 
