@@ -265,14 +265,16 @@ Además del glow, el fondo también responde. El background va de un gris neutro
 
 Efecto de “choque de energía”: Si se acercan demasiado (menos de 50px), ocurre un destello rápido (círculos se vuelven blancos y salen estrellas con destellos del centro de los circulos).  
 
+<a name="I2"></a>
+![Imagen de WhatsApp 2025-10-02 a las 21 54 44_33b36eb4](https://github.com/user-attachments/assets/51d2f38d-9205-46f7-9ce4-bef52f52a6fa)
+
+
 <a name="I3"></a>
 ### Implementación 
 Lo unico que se cambio fue el page1.js y el page2.js   
 Link del repositorio:  
 https://github.com/mafora12/sfi-2025-20-act5     
 
-<a name="I3"></a>
-![Imagen de WhatsApp 2025-10-02 a las 21 54 44_33b36eb4](https://github.com/user-attachments/assets/51d2f38d-9205-46f7-9ce4-bef52f52a6fa)
 
 
 Final video:   <a name="I4"></a>
@@ -288,6 +290,7 @@ https://github.com/user-attachments/assets/c10ea073-b124-488f-b3b8-1a02da06fdc5
 | 4 | 5.0 | Se puede observar la [actividad 4](#actividad4) completa, con los 4 experimentos ([e6](#e6), [e7](#e7), [e8](#e8), [e9](#e9), [e10](#e10)) completados y su  respectiva verificación con imágenes |
 | 5 | 5.0 | Se muestra la [actividad 5](#actividad5) completa, con la explicación de la idea ([I1](#I1)), el boceto grafico ([I2](#I2)), el desarrollo del código ([I3](#I3)) y por ultimo un video adicional, que muestra el arte final ([I4](#I4)) |
 | nota final del promedio | 5.0 |  |
+
 
 
 
