@@ -284,10 +284,11 @@ https://github.com/user-attachments/assets/c10ea073-b124-488f-b3b8-1a02da06fdc5
 | --- | --- | --- |
 | 1 | 5.0 | Se evidencia la [actividad 1](#actividad1)completa, con las 5 ([p1](#p1), [p](#p2), [p3](#p3), [p4](#p4), [p5](#p5)) preguntas completadas y su respectiva verificación ([v1](#v1) y [v2](#v2)) |
 | 2 | 5.0 | Se evidencia la [actividad 2](#actividad2)completa, con las 8 secciones  ([p6](#p6), [p7](#p7), [p8](#p8), [p9](#p9), [p10](#p10), [p11](#p11), [p12](#p12))  completadas y una duda surgida ([v3](#v3)) |
-| 3 | 5.0 | Se evidencia  la [actividad 3](#actividad3)completa, con los 4 experimentos ([e1](#e1), [e2](#e2), [e3](#e3), [e4](#e4))  completados y suy respectiva verificación con imágenes y la redacción del aprendizaje ([e5](#e5)) |
+| 3 | 5.0 | Se evidencia  la [actividad 3](#actividad3)completa, con los 4 experimentos ([e1](#e1), [e2](#e2), [e3](#e3), [e4](#e4))  completados y sus respectiva verificación con imágenes que estan en cada experimento y por ultima la redacción del aprendizaje ([e5](#e5)) |
 | 4 | 5.0 | Se puede evidenciar la [actividad 4](#actividad4)completa, con los 4 experimentos ([e6](#e6), [e7](#e7), [e8](#e8), [e9](#e9), [e10](#e10)) completados y su  respectiva verificación con imágenes |
 | 5 | 5.0 | Se muestra la [actividad 5](#actividad5)completa, con la explicación de la idea ([I1](#I1)), el boceto grafico ([I2](#I2)), el desarrollo del código ([I3](#I3)) y por ultimo un video adicional, que muestra el arte final ([I4](#I4)) |
 | nota final del promedio | 5.0 |  |
+
 
 
 
