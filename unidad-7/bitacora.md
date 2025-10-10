@@ -61,9 +61,18 @@ Esto pasa porque el servidor usa socket.broadcast.emit, que envía el mensaje a 
 ### ¿Qué información útil te proporcionan los mensajes console.log en el servidor durante la ejecución?  
 Los mensajes de console.log me ayudan a ver lo que está pasando en el servidor en tiempo real. Por ejemplo, me muestran cuándo un cliente se conecta o se desconecta, y también los datos que el servidor recibe del celular (como las coordenadas del toque). Gracias a eso puedo saber si la comunicación está funcionando bien o si algo falló durante la conexión.
 
-## Actividad 4  
+## Actividad 4   
+
+Profe como no entendi muy bien como hacerlo bien completo hice tres varaciones:  
+### Variación 1:  
+<img width="1697" height="1210" alt="image" src="https://github.com/user-attachments/assets/f72a9d41-5abb-45ca-80fb-5e16ceb237a5" />  
+### Variación 2:  
+<img width="462" height="1215" alt="image" src="https://github.com/user-attachments/assets/9330c5b1-6a63-484c-a1ec-c78327995aa6" />  
+### Variación 3:  
+<img width="1598" height="1156" alt="image" src="https://github.com/user-attachments/assets/ba0fb18a-d46c-4162-840c-7d9a4c50fd66" />
 
 
 
   
+
 
