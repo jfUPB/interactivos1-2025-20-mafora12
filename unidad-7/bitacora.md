@@ -80,6 +80,19 @@ Profe como no entendi muy bien como hacerlo bien completo hice tres varaciones:
 ## Actividad 5  
 - Link del repositorio:  
   https://github.com/mafora12/actividad_5.git
+
+
+## Autoevaluación   
+
+| Actividades | Nota | justificación |
+| --- | --- | --- |
+| 1 | 5.0 | Se evidencia la [actividad 1](#actividad 1)completa, con las 4  (p1, p2, p3, p4) preguntas completadas y su respectiva verificación (v1 y v2) |
+| 2 | 5.0 | Se evidencia la [actividad  2](#actividad 2)completa, con las 8 preguntas  (p5, p6, p7, p8)  completadas y su respectiva verificación (v3) |
+| 3 | 5.0 | Se evidencia  la [actividad 3](#actividad 3)completa, con las 4 preguntas  (p9, p10, p11, p12)  completadas |
+| 4 | 5.0 | Se puede evidenciar la [actividad 4](#actividad 4)completa, con los mapas (v4, v5, v6)  completados. |
+| 5 | 5.0 | Se muestra la [actividad 5](#actividad 5) completa, con 4l boceto de la idea (v7) y el desarrollo del código (p13) |
+| nota final del promedio | 5.0 |  |
   
+
 
 
