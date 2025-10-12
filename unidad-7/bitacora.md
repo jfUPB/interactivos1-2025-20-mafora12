@@ -95,8 +95,8 @@ Profe como no entendi muy bien como hacerlo bien completo hice tres varaciones:
 ## Actividad 5  
 <a name="actividad5"></a>
 
-- boceto de la idea: <a name="v7"></a>
-  ![Imagen de WhatsApp 2025-10-11 a las 21 45 08_790d12e2](https://github.com/user-attachments/assets/11101188-df42-46dd-abad-338911a8cd2b)
+- boceto de la idea: <a name="v7"></a>  
+  ![Imagen de WhatsApp 2025-10-11 a las 21 45 08_790d12e2](https://github.com/user-attachments/assets/11101188-df42-46dd-abad-338911a8cd2b)  
 
 La idea es que al empezar la canción se vea pulsación de color en circulos que se generan seguún la posicion del touch en el celular mientras que el ritmo se      vea evidenciado en la parte inferior de la pantalla del computador  y en los colores y pulsacionde los circulos generados desde el celular, y al tener notas altas y contundetes los circulos se expanden para marcar el ritmo.
 
@@ -115,6 +115,7 @@ La idea es que al empezar la canción se vea pulsación de color en circulos que
 | 5 | 5.0 | Se muestra la [actividad 5](#actividad5) completa, con el boceto de la idea ([v7](#v7)) y el desarrollo del código ([p13](#p13)) |
 | nota final del promedio | 5.0 |  |
   
+
 
 
 
