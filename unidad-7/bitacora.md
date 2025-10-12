@@ -4,7 +4,7 @@
 ## Actividad 1.   
 <a name="actividad1"></a>
 
-<img width="1703" height="1047" alt="image" src="https://github.com/user-attachments/assets/2867dc36-b7ba-4708-8938-ec7809698386" />
+<img width="1703" height="1047" alt="image" src="https://github.com/user-attachments/assets/2867dc36-b7ba-4708-8938-ec7809698386" /> <a name="v1"></a>
 
 ### ¿Qué URL de Dev Tunnels obtuviste? ¿Por qué crees que necesitamos usar esta URL en lugar de http://localhost:3000 o la IP local de tu computador para que el celular se conecte?
 <a name="p1"></a>
@@ -19,7 +19,7 @@ Dev Tunnels crea un enlace público y seguro en Internet que redirige las petici
 
 ### ¿Qué mensajes observaste en la terminal del servidor al conectar el cliente de escritorio y el cliente móvil? ¿Eran diferentes los mensajes o identificadores?
 <a name="p3"></a>
-<img width="855" height="320" alt="image" src="https://github.com/user-attachments/assets/a49c6790-6b20-413e-9795-dd8c54b339b3" />
+<img width="855" height="320" alt="image" src="https://github.com/user-attachments/assets/a49c6790-6b20-413e-9795-dd8c54b339b3" /> <a name="v2"></a>
 Los mensajes eran iguales para ambos clientes (escritorio y móvil), ya que el servidor solo muestra la conexión o desconexión sin distinguir qué tipo de cliente es. Sin embargo, internamente cada cliente tiene un identificador de conexión diferente (un socket ID) que el servidor usa para reconocerlos individualmente.
 
 ### Describe el comportamiento observado: ¿Funcionó la interacción? ¿Hubo algún retraso (latencia)?  
@@ -45,7 +45,7 @@ En cambio, Dev Tunnels crea una dirección pública accesible desde cualquier lu
 ### Capturas de pantalla:  
 <a name="p8"></a>
 #### computador:  
-<img width="1918" height="957" alt="image" src="https://github.com/user-attachments/assets/72e5ed00-a9c4-488c-a547-102bee2b8d53" />  
+<img width="1918" height="957" alt="image" src="https://github.com/user-attachments/assets/72e5ed00-a9c4-488c-a547-102bee2b8d53" />  <a name="v3"></a>
 
 #### celular:  
 ![Imagen de WhatsApp 2025-10-08 a las 15 09 16_89d00e82](https://github.com/user-attachments/assets/8f60d666-4391-4225-8a42-80e77c518f88)  
@@ -81,20 +81,26 @@ Los mensajes de console.log me ayudan a ver lo que está pasando en el servidor 
 Profe como no entendi muy bien como hacerlo bien completo hice tres varaciones:  
 ### Variación 1:  
 
-<img width="1697" height="1210" alt="image" src="https://github.com/user-attachments/assets/f72a9d41-5abb-45ca-80fb-5e16ceb237a5" />  
+<img width="1697" height="1210" alt="image" src="https://github.com/user-attachments/assets/f72a9d41-5abb-45ca-80fb-5e16ceb237a5" />  <a name="v4"></a>
 
 ### Variación 2:  
 
-<img width="462" height="1215" alt="image" src="https://github.com/user-attachments/assets/9330c5b1-6a63-484c-a1ec-c78327995aa6" />  
+<img width="462" height="1215" alt="image" src="https://github.com/user-attachments/assets/9330c5b1-6a63-484c-a1ec-c78327995aa6" />  <a name="v5"></a>
 
 ### Variación 3:  
 
-<img width="1598" height="1156" alt="image" src="https://github.com/user-attachments/assets/ba0fb18a-d46c-4162-840c-7d9a4c50fd66" />   
+<img width="1598" height="1156" alt="image" src="https://github.com/user-attachments/assets/ba0fb18a-d46c-4162-840c-7d9a4c50fd66" />   <a name="v6"></a>
 
 
 ## Actividad 5  
 <a name="actividad5"></a>
-- Link del repositorio:  
+
+- boceto de la idea: <a name="v7"></a>
+  ![Imagen de WhatsApp 2025-10-11 a las 21 45 08_790d12e2](https://github.com/user-attachments/assets/11101188-df42-46dd-abad-338911a8cd2b)
+
+La idea es que al empezar la canción se vea pulsación de color en circulos que se generan seguún la posicion del touch en el celular mientras que el ritmo se      vea evidenciado en la parte inferior de la pantalla del computador  y en los colores y pulsacionde los circulos generados desde el celular, y al tener notas altas y contundetes los circulos se expanden para marcar el ritmo.
+
+- Link del repositorio:  <a name="p13"></a>
   https://github.com/mafora12/actividad_5.git
 
 
@@ -102,13 +108,14 @@ Profe como no entendi muy bien como hacerlo bien completo hice tres varaciones:
 
 | Actividades | Nota | justificación |
 | --- | --- | --- |
-| 1 | 5.0 | Se evidencia la [actividad 1](#actividad1) completa, con las 4  (p1, p2, p3, p4) preguntas completadas y su respectiva verificación (v1 y v2) |
-| 2 | 5.0 | Se evidencia la [actividad  2](#actividad2)completa, con las 8 preguntas  (p5, p6, p7, p8)  completadas y su respectiva verificación (v3) |
-| 3 | 5.0 | Se evidencia  la [actividad 3](#actividad3)completa, con las 4 preguntas  (p9, p10, p11, p12)  completadas |
-| 4 | 5.0 | Se puede evidenciar la [actividad 4](#actividad4)completa, con los mapas (v4, v5, v6)  completados. |
-| 5 | 5.0 | Se muestra la [actividad 5](#actividad5) completa, con 4l boceto de la idea (v7) y el desarrollo del código (p13) |
+| 1 | 5.0 | Se evidencia la [actividad 1](#actividad1) completa, con las 4  ([p1](#p1), [p2](#p2), [p3](#p3), [p4](#p4)) preguntas completadas y su respectiva verificación ([v1](#v1) y [v2](#v2)) |
+| 2 | 5.0 | Se evidencia la [actividad  2](#actividad2)completa, con las 4 preguntas  ([p5](#p5), [p6](#p6), [p7](#p7), [p8](#p8))  completadas y su respectiva verificación ([v3](#v3)) |
+| 3 | 5.0 | Se evidencia  la [actividad 3](#actividad3)completa, con las 4 preguntas ([p9](#p9), [p10](#p10), [p11](#p11), [p12](#p12)) completadas |
+| 4 | 5.0 | Se puede evidenciar la [actividad 4](#actividad4)completa, con los mapas ([v4](#v4), ([v5](#v5), ([v6](#v6))  completados. |
+| 5 | 5.0 | Se muestra la [actividad 5](#actividad5) completa, con 4l boceto de la idea ([7](#v7)) y el desarrollo del código ([p13](#vp13)) |
 | nota final del promedio | 5.0 |  |
   
+
 
 
 
