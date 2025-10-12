@@ -2,7 +2,7 @@
 # Evidencias de la unidad 7  
 
 ## Actividad 1.   
-<a name="actividad 1"></a>
+<a name="actividad1"></a>
 
 <img width="1703" height="1047" alt="image" src="https://github.com/user-attachments/assets/2867dc36-b7ba-4708-8938-ec7809698386" />
 
@@ -27,7 +27,7 @@ Los mensajes eran iguales para ambos clientes (escritorio y móvil), ya que el s
 La interacción era que en el telefono al tocar la pantalla en el espacio gris de la pagina se movia el circulo de la web en el computador. No se me concto de manera lenta, de hecho fue fluido.
 
 ## Actividad 2
-<a name="actividad 2"></a>
+<a name="actividad2"></a>
 ###  Explica con tus propias palabras: ¿Por qué es necesario Dev Tunnels en este escenario y cómo funciona conceptualmente?  
 <a name="p5"></a>
 Dev Tunnels es necesario porque mi servidor está corriendo solo en mi computador (localhost), y mi celular no puede entrar ahí directamente. Lo que hace Dev Tunnels es crear una dirección pública que funciona como un puente entre Internet y mi servidor local. Así, cuando abro esa URL desde el celular, Dev Tunnels envía la información hasta mi computador y la devuelve de nuevo, permitiendo que ambos se conecten sin estar en la misma red.  
@@ -54,7 +54,7 @@ En cambio, Dev Tunnels crea una dirección pública accesible desde cualquier lu
   <img width="1138" height="728" alt="image" src="https://github.com/user-attachments/assets/5a90ede0-190f-4185-bbb0-2ffcddfc6a53" />   
 
 ## Actividad 3   
-<a name="actividad 3"></a>
+<a name="actividad3"></a>
 ### ¿Cuál es la función principal de express.static(‘public’) en este servidor? ¿Cómo se compara con el uso de app.get(‘/ruta’, …) del servidor de la Unidad 6? 
 <a name="p9"></a>
 La función express.static('public') sirve para que el servidor muestre directamente todos los archivos que están dentro de la carpeta public, sin tener que crear rutas manuales. Así, si entro a /desktop o /mobile, el servidor ya sabe dónde buscar esos archivos.  
@@ -77,7 +77,7 @@ Esto pasa porque el servidor usa socket.broadcast.emit, que envía el mensaje a 
 Los mensajes de console.log me ayudan a ver lo que está pasando en el servidor en tiempo real. Por ejemplo, me muestran cuándo un cliente se conecta o se desconecta, y también los datos que el servidor recibe del celular (como las coordenadas del toque). Gracias a eso puedo saber si la comunicación está funcionando bien o si algo falló durante la conexión.
 
 ## Actividad 4   
-<a name="actividad 4"></a>
+<a name="actividad4"></a>
 Profe como no entendi muy bien como hacerlo bien completo hice tres varaciones:  
 ### Variación 1:  
 
@@ -93,7 +93,7 @@ Profe como no entendi muy bien como hacerlo bien completo hice tres varaciones:
 
 
 ## Actividad 5  
-<a name="actividad 5"></a>
+<a name="actividad5"></a>
 - Link del repositorio:  
   https://github.com/mafora12/actividad_5.git
 
@@ -102,13 +102,14 @@ Profe como no entendi muy bien como hacerlo bien completo hice tres varaciones:
 
 | Actividades | Nota | justificación |
 | --- | --- | --- |
-| 1 | 5.0 | Se evidencia la [actividad 1](#actividad 1) completa, con las 4  (p1, p2, p3, p4) preguntas completadas y su respectiva verificación (v1 y v2) |
-| 2 | 5.0 | Se evidencia la [actividad  2](#actividad 2)completa, con las 8 preguntas  (p5, p6, p7, p8)  completadas y su respectiva verificación (v3) |
-| 3 | 5.0 | Se evidencia  la [actividad 3](#actividad 3)completa, con las 4 preguntas  (p9, p10, p11, p12)  completadas |
-| 4 | 5.0 | Se puede evidenciar la [actividad 4](#actividad 4)completa, con los mapas (v4, v5, v6)  completados. |
-| 5 | 5.0 | Se muestra la [actividad 5](#actividad 5) completa, con 4l boceto de la idea (v7) y el desarrollo del código (p13) |
+| 1 | 5.0 | Se evidencia la [actividad 1](#actividad1) completa, con las 4  (p1, p2, p3, p4) preguntas completadas y su respectiva verificación (v1 y v2) |
+| 2 | 5.0 | Se evidencia la [actividad  2](#actividad2)completa, con las 8 preguntas  (p5, p6, p7, p8)  completadas y su respectiva verificación (v3) |
+| 3 | 5.0 | Se evidencia  la [actividad 3](#actividad3)completa, con las 4 preguntas  (p9, p10, p11, p12)  completadas |
+| 4 | 5.0 | Se puede evidenciar la [actividad 4](#actividad4)completa, con los mapas (v4, v5, v6)  completados. |
+| 5 | 5.0 | Se muestra la [actividad 5](#actividad5) completa, con 4l boceto de la idea (v7) y el desarrollo del código (p13) |
 | nota final del promedio | 5.0 |  |
   
+
 
 
 
