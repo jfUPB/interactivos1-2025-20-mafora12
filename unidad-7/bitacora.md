@@ -112,9 +112,10 @@ La idea es que al empezar la canción se vea pulsación de color en circulos que
 | 2 | 5.0 | Se evidencia la [actividad  2](#actividad2)completa, con las 4 preguntas  ([p5](#p5), [p6](#p6), [p7](#p7), [p8](#p8))  completadas y su respectiva verificación ([v3](#v3)) |
 | 3 | 5.0 | Se evidencia  la [actividad 3](#actividad3)completa, con las 4 preguntas ([p9](#p9), [p10](#p10), [p11](#p11), [p12](#p12)) completadas |
 | 4 | 5.0 | Se puede evidenciar la [actividad 4](#actividad4)completa, con los mapas ([v4](#v4), ([v5](#v5), ([v6](#v6))  completados. |
-| 5 | 5.0 | Se muestra la [actividad 5](#actividad5) completa, con 4l boceto de la idea ([v7](#v7)) y el desarrollo del código ([p13](#vp13)) |
+| 5 | 5.0 | Se muestra la [actividad 5](#actividad5) completa, con el boceto de la idea ([v7](#v7)) y el desarrollo del código ([p13](#p13)) |
 | nota final del promedio | 5.0 |  |
   
+
 
 
 
