@@ -1,4 +1,3 @@
-
 # Evidencias de la unidad 8  
 ## Actividad 1  
 ### Referentes visuales
@@ -9,12 +8,22 @@
 Los referentes visuale son enfocados en la combinación estre lo etereo y el universo, se crean pequeños circulos como notas en un piano que viajan al universo y explotan. Me base en la estetica de los cuadros que sugieren movimiento. Ademas toma un poco el funcionamiento de piano tails para el movimiento en el telefono y el micro:bit. 
 
 ### Concepto visual  
-Color Jam representa una explosión de color y sonido, donde cada nota y movimiento genera una reacción visual distinta, como si las teclas del piano liberaran fragmentos de galaxia.
-El objetivo es sincronizar música y movimiento humano en un mismo espacio interactivo.
-
-- Cuando suena el piano: las formas se expanden y cambian de color según la intensidad del sonido.
-
-- Cuando el usuario se mueve o toca la pantalla: las partículas cambian de dirección, brillo o tamaño.
-
+Color Jam representa una explosión de color y sonido, donde cada nota y movimiento genera una reacción visual distinta, como si las teclas del piano liberaran fragmentos de galaxia. El objetivo es sincronizar música y movimiento humano en un mismo espacio interactivo.  
+- Cuando suena el piano: las formas se expanden y cambian de color según la intensidad del sonido.  
+- Cuando el usuario se mueve o toca la pantalla: las partículas cambian de dirección, brillo o tamaño.  
 - El resultado: una experiencia visual que mezcla arte sonoro, color y energía física en tiempo real.
+
+### ¿cómo el móvil y el micro:bit controlarán las visuales?   
+
+#### Móvil  
+- Inclinación (giroscopio): cambia el flujo del movimiento de las partículas (como si el universo girara).  
+- Toques en pantalla: generan explosiones de color o destellos de luz.  
+- Deslizar: modifica el tamaño o velocidad del sistema visual (como un “zoom” galáctico).  
+#### micro:bit   
+- Acelerómetro: controla la vibración o el temblor de las galaxias (más movimiento = más energía).  
+- Botón A: cambia la paleta de color (por ejemplo, frío ↔ cálido).  
+- Botón B: cambia el modo de visualización (por ejemplo, nebulosa ↔ constelación).  
+- Shake: resetea la visual o genera una “explosión cósmica” de partículas.
+  
+
 
