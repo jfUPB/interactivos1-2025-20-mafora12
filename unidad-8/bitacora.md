@@ -9,21 +9,25 @@ Los referentes visuale son enfocados en la combinación estre lo etereo y el uni
 
 ### Concepto visual  
 Color Jam representa una explosión de color y sonido, donde cada nota y movimiento genera una reacción visual distinta, como si las teclas del piano liberaran fragmentos de galaxia. El objetivo es sincronizar música y movimiento humano en un mismo espacio interactivo.  
-- Cuando suena el piano: las formas se expanden y cambian de color según la intensidad del sonido.  
-- Cuando el usuario se mueve o toca la pantalla: las partículas cambian de dirección, brillo o tamaño.  
+- Cuando suena el piano: las formas se expanden según la intensidad del sonido.  
+- Cuando el usuario se mueve o toca la pantalla: las partículas cambian de dirección.  
 - El resultado: una experiencia visual que mezcla arte sonoro, color y energía física en tiempo real.
 
 ### ¿cómo el móvil y el micro:bit controlarán las visuales?   
 
 #### Móvil  
-- Inclinación (giroscopio): cambia el flujo del movimiento de las partículas (como si el universo girara).  
-- Toques en pantalla: generan explosiones de color o destellos de luz.  
-- Deslizar: modifica el tamaño o velocidad del sistema visual (como un “zoom” galáctico).  
+Detecta la posición del toque y la rotación, enviando colores y movimientos que crean partículas dinámicas en pantalla.  
 #### micro:bit   
-- Acelerómetro: controla la vibración o el temblor de las galaxias (más movimiento = más energía).  
-- Botón A: cambia la paleta de color (por ejemplo, frío ↔ cálido).  
-- Botón B: cambia el modo de visualización (por ejemplo, nebulosa ↔ constelación).  
-- Shake: resetea la visual o genera una “explosión cósmica” de partículas.
+Sus botones alternan el color de los círculos y del fondo, y al agitarlo genera destellos animados.  
+
+### Bocetos    
+![Imagen de WhatsApp 2025-10-24 a las 17 34 32_7964380c](https://github.com/user-attachments/assets/19067fbc-7858-4676-a5de-b74062ade061)  
+![Imagen de WhatsApp 2025-10-24 a las 17 34 33_5f305cb3](https://github.com/user-attachments/assets/2375c886-d497-4c7f-948d-9d5f2518ea74)  
+
+### Diagrama 
+
+
   
+
 
 
