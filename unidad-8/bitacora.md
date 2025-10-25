@@ -376,7 +376,8 @@ Con este último cambio, todo funcionó perfectamente. Los datos del micro:bit c
 
 #### Proyecto general  
 
-  Lnk del proyecto: https://github.com/mafora12/actividad_5.git
+  Link del proyecto: https://github.com/mafora12/actividad_5.git
   
     
+
 
