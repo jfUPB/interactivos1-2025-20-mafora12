@@ -31,7 +31,9 @@ Sus botones alternan el color de los círculos y del fondo, y al agitarlo genera
 
 ## Actividad 2  
 ### Documentación del proceso  
-Al tener la base del ejercico, decidi mejorar algunos aspectos como elfondo y el color de los circulos para que no se viera tan aburrido 
+Al tener la base del ejercicio original, decidí mejorar algunos aspectos visuales para que no se viera tan plano o aburrido.
+Mi objetivo era darle más profundidad y dinamismo al fondo, además de hacer que los círculos resaltaran más con mejores colores y degradados.  
+Primero, modifiqué el fondo para que tuviera un degradado dinámico, que aportara más vida al escenario:  
 ```python
 function drawBackground() {
   // --- Degradado dinámico ---
@@ -42,7 +44,7 @@ function drawBackground() {
     line(0, y, width, y);
   }  
 ```   
-y mejorar los colores de los circulos para que resalten y tengan una mejor visual
+Luego, mejoré los colores de los círculos reactivos para que resaltaran mejor y se integraran de forma estética con el fondo:  
 ```python
 function drawReactiveCircle(x, y, size, alpha, level) {
   let bright = map(level, 0, 0.3, 60, 100);
@@ -54,7 +56,12 @@ function drawReactiveCircle(x, y, size, alpha, level) {
   ellipse(x, y, size);
 }
 ```
-Teniendo eso listo empece con la union con el micro:bit, la cual modifique ciertos aspectos en el scketch.js del dekstop, así:  
+Estas mejoras fueron clave para lograr un aspecto más interactivo y atractivo antes de empezar con la integración del micro:bit.    
+
+#### Integración con el micro:bit
+Una vez tuve lista la parte visual, pasé a conectar el micro:bit para controlar ciertos aspectos de las visuales.
+Para esto, modifiqué el archivo sketch.js del entorno desktop, añadiendo funciones que respondieran a los botones A y B, y al gesto de “shake”.  
+
 ```python
 let socket;
 let trails = [];
@@ -132,10 +139,244 @@ function setup() {
   amplitude = new p5.Amplitude();
 }
 ```
-Este codigo me permitio las visuales que me generaria el micro:bit los cuales son:   
-  - Boton A: cambia de color el circulo generado por el celular
-  - Boton B: cambia el color de fondo
-  - sheke: Agrega destellos azules a la estetica de las visuales.
+Con este código, el micro:bit controla las visuales de esta forma:  
+- Botón A: cambia el color del círculo generado por el móvil.  
+- Botón B: alterna entre un fondo colorido y uno gris.  
+- Shake: genera destellos azules animados sobre las visuales.
 
-Luego configure el server.js para notificar los mensajes del celular, microbit y los clientes:   
+#### Configuración del servidor  
+Para conectar el micro:bit y el móvil al mismo tiempo, modifiqué el archivo server.js para que emitiera y recibiera correctamente los mensajes de ambos.  
+
 ```python
+// 🌈 COLOR JAM SERVER - Integración total con micro:bit
+const express = require("express");
+const http = require("http");
+const socketIO = require("socket.io");
+const { SerialPort } = require("serialport");
+const { ReadlineParser } = require("@serialport/parser-readline");
+
+const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
+const port = 3000;
+
+// Sirve la carpeta public (donde está tu index.html y sketch.js)
+app.use(express.static("public"));
+
+// 💻 WebSocket conexión general
+io.on("connection", (socket) => {
+  console.log("🟢 Nuevo cliente conectado");
+
+  // 🎨 Datos del móvil
+  socket.on("mobileData", (data) => {
+    io.emit("mobileData", data);
+  });
+
+  // 🧠 Datos del micro:bit enviados manualmente (opcional)
+  socket.on("microbitData", (data) => {
+    io.emit("microbitData", data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("🔴 Cliente desconectado");
+  });
+});
+
+// 🧩 MICRO:BIT vía Puerto Serial (ajusta el COM según tu PC)
+const portPath = "COM13"; //  cambia este número si tu micro:bit usa otro puerto
+const serial = new SerialPort({ path: portPath, baudRate: 115200 });
+const parser = serial.pipe(new ReadlineParser({ delimiter: "\n" }));
+
+parser.on("data", (line) => {
+  try {
+    const data = JSON.parse(line);
+    io.emit("microbitData", data); // Enviar a todos los clientes conectados
+    console.log("📤 microbitData:", data);
+  } catch (err) {
+    console.log("⚠️ Error leyendo micro:bit:", err);
+  }
+});
+
+server.listen(port, () => {
+  console.log(`🚀 Servidor en: http://localhost:${port}`);
+  console.log("🔌 Esperando datos del micro:bit en", portPath);
+});
+```
+#### Problemas con el micro:bit y soluciones  
+
+Al principio, el micro:bit no enviaba los datos correctamente.
+Estaba usando el editor MicroPython online, y aunque parecía funcionar, el formato JSON no era totalmente compatible.
+Usaba este código:
+```python
+from microbit import *
+import json
+
+uart.init(baudrate=115200)
+
+while True:
+    data = {
+        "buttonA": button_a.is_pressed(),
+        "buttonB": button_b.is_pressed(),
+        "shake": accelerometer.was_gesture("shake")
+    }
+    uart.write(json.dumps(data) + "\n")
+    sleep(200)
+```  
+Sin embargo, este formato generaba errores, así que cambié la estructura a texto plano estilo JSON, lo cual sí funcionó correctamente:  
+```python
+from microbit import *
+
+uart.init(baudrate=115200)
+
+while True:
+    # Creamos el texto como si fuera JSON
+    data = '{ "buttonA": %s, "buttonB": %s, "shake": %s }\n' % (
+        "true" if button_a.is_pressed() else "false",
+        "true" if button_b.is_pressed() else "false",
+        "true" if accelerometer.was_gesture("shake") else "false"
+    )
+    
+    uart.write(data)
+    sleep(200)
+```
+Finalmente, este código fue el que logró enviar los datos correctamente al servidor.  
+
+#### Error final y solución en el index.html   
+Fue entonces cuando le pregunté a ChatGPT si mi index.html del desktop tenía algo mal.
+Ahí descubrí que necesitaba un botón de conexión manual al puerto serial, para que el navegador pidiera permiso de acceso al micro:bit.  
+
+- Prompt:  
+  " este es mi index.html del dekstop
+  ```python
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="utf-8" />
+  <title>ColorJam - Visualizador</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Solo una librería de p5.js -->
+  <script src="libraries/p5.min.js"></script>
+  <!-- p5.sound debe ir después de p5 -->
+  <script src="libraries/p5.sound.min.js"></script>
+  <script src="sketch.js"></script>
+  <style>
+   body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  }
+  </style>
+  </head>
+  <body></body>
+  </html>"
+  ```
+  - Respuesta con la version mejorada  
+    ```python
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="utf-8" />
+    <title>ColorJam - Visualizador</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Solo una librería de p5.js -->
+    <script src="libraries/p5.min.js"></script>
+    <!-- p5.sound debe ir después de p5 -->
+    <script src="libraries/p5.sound.min.js"></script>
+    <script src="sketch.js"></script>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: black;
+      }
+
+      /* Botón flotante arriba a la izquierda */
+      #connectBtn {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background: #ff0044;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        padding: 10px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        z-index: 1000;
+      }
+
+      #connectBtn:hover {
+        background: #ff3366;
+      }
+    </style>
+    </head>
+
+    <body>
+    <button id="connectBtn">🔌 Conectar micro:bit</button>
+
+    <script>
+      // Variables globales accesibles desde sketch.js
+      window.microData = { buttonA: false, buttonB: false, shake: false };
+
+      document.getElementById("connectBtn").addEventListener("click", async () => {
+        try {
+          const port = await navigator.serial.requestPort();
+          await port.open({ baudRate: 115200 });
+          const reader = port.readable.getReader();
+          console.log("✅ micro:bit conectado");
+          let buffer = "";
+
+          while (true) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            buffer += new TextDecoder().decode(value);
+
+            // Procesar cada línea JSON enviada por la micro:bit
+            const lines = buffer.split("\n");
+            buffer = lines.pop();
+
+            for (let line of lines) {
+              try {
+                const data = JSON.parse(line.trim());
+                window.microData = data; // 👈 Esto actualiza los datos globales
+              } catch (e) {
+                // ignora líneas vacías o corruptas
+              }
+            }
+          }
+        } catch (err) {
+          console.error("❌ Error conectando micro:bit:", err);
+          alert("Error conectando al micro:bit. Usa Chrome o Edge y acepta permisos.");
+        }
+      });
+    </script>
+    </body>
+    </html>
+    ```  
+Con este último cambio, todo funcionó perfectamente. Los datos del micro:bit comenzaron a recibirse correctamente, y finalmente logré la integración total con las visuales de Color Jam.  
+
+### Codigos  
+#### Micro:bit  
+  ```python
+  from microbit import *
+
+  uart.init(baudrate=115200)
+
+  while True:
+    # Creamos el texto como si fuera JSON
+    data = '{ "buttonA": %s, "buttonB": %s, "shake": %s }\n' % (
+        "true" if button_a.is_pressed() else "false",
+        "true" if button_b.is_pressed() else "false",
+        "true" if accelerometer.was_gesture("shake") else "false"
+    )
+    
+    uart.write(data)
+    sleep(200)
+   ```
+
+#### Proyecto general  
+
+  Lnk del proyecto: https://github.com/mafora12/actividad_5.git
+  
+    
+
