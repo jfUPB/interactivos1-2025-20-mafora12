@@ -378,6 +378,13 @@ Con este último cambio, todo funcionó perfectamente. Los datos del micro:bit c
 
   Link del proyecto: https://github.com/mafora12/actividad_5.git
   
-    
+## Autoevalución  
+
+| Actividades | Nota | justificación |
+| --- | --- | --- |
+| 1 | 5.0 | Se evidencia la [actividad 1](#actividad1) completa, con las 5  ([p1](#p1), [p2](#p2), [p3](#p3), [p4](#p4),[p5](#p5) ) preguntas completadas y su respectiva verificación |
+| 2 | 5.0 | Se evidencia la [actividad  2](#actividad2)completa, con la documentación y wl link de todos los dodigos ([p6](#p6), [p7](#p7)) |
+| nota final del promedio | 5.0 |  |
+
 
 
