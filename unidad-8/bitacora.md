@@ -1,6 +1,8 @@
 # Evidencias de la unidad 8  
-## Actividad 1  
+## Actividad 1
+<a name="actividad1"></a>
 ### Referentes visuales
+<a name="p1"></a>
 <img width="1080" height="1920" alt="image" src="https://github.com/user-attachments/assets/92055006-eaca-434b-bdf9-3603bd26999a" />  
 <img width="1200" height="1024" alt="image" src="https://github.com/user-attachments/assets/4b9fd73b-c591-42f9-8896-d7d5fb84f259" />  
 <img width="1152" height="2048" alt="image" src="https://github.com/user-attachments/assets/68013773-28ab-4f7b-b725-45be8f52d00e" />
@@ -8,29 +10,33 @@
 Los referentes visuale son enfocados en la combinación estre lo etereo y el universo, se crean pequeños circulos como notas en un piano que viajan al universo y explotan. Me base en la estetica de los cuadros que sugieren movimiento. Ademas toma un poco el funcionamiento de piano tails para el movimiento en el telefono y el micro:bit. 
 
 ### Concepto visual  
+<a name="p2"></a>
 Color Jam representa una explosión de color y sonido, donde cada nota y movimiento genera una reacción visual distinta, como si las teclas del piano liberaran fragmentos de galaxia. El objetivo es sincronizar música y movimiento humano en un mismo espacio interactivo.  
 - Cuando suena el piano: las formas se expanden según la intensidad del sonido.  
 - Cuando el usuario se mueve o toca la pantalla: las partículas cambian de dirección.  
 - El resultado: una experiencia visual que mezcla arte sonoro, color y energía física en tiempo real.
 
 ### ¿cómo el móvil y el micro:bit controlarán las visuales?   
-
+<a name="p3"></a>
 #### Móvil  
 Detecta la posición del toque y la rotación, enviando colores y movimientos que crean partículas dinámicas en pantalla.  
 #### micro:bit   
 Sus botones alternan el color de los círculos y del fondo, y al agitarlo genera destellos animados.  
 
 ### Bocetos    
+<a name="p4"></a>
 ![Imagen de WhatsApp 2025-10-24 a las 17 34 32_7964380c](https://github.com/user-attachments/assets/19067fbc-7858-4676-a5de-b74062ade061)  
 ![Imagen de WhatsApp 2025-10-24 a las 17 34 33_5f305cb3](https://github.com/user-attachments/assets/2375c886-d497-4c7f-948d-9d5f2518ea74)  
 
 ### Diagrama  
-
+<a name="p5"></a>
 <img width="917" height="1118" alt="image" src="https://github.com/user-attachments/assets/deb9cd5c-2887-44ec-9c0b-94e7804cccaa" />
 
 
-## Actividad 2  
-### Documentación del proceso  
+## Actividad 2   
+<a name="actividad2"></a>
+### Documentación del proceso   
+<a name="p6"></a>
 Al tener la base del ejercicio original, decidí mejorar algunos aspectos visuales para que no se viera tan plano o aburrido.
 Mi objetivo era darle más profundidad y dinamismo al fondo, además de hacer que los círculos resaltaran más con mejores colores y degradados.  
 Primero, modifiqué el fondo para que tuviera un degradado dinámico, que aportara más vida al escenario:  
@@ -356,6 +362,7 @@ Ahí descubrí que necesitaba un botón de conexión manual al puerto serial, pa
 Con este último cambio, todo funcionó perfectamente. Los datos del micro:bit comenzaron a recibirse correctamente, y finalmente logré la integración total con las visuales de Color Jam.  
 
 ### Codigos  
+<a name="p7"></a>
 #### Micro:bit  
   ```python
   from microbit import *
@@ -385,6 +392,7 @@ Con este último cambio, todo funcionó perfectamente. Los datos del micro:bit c
 | 1 | 5.0 | Se evidencia la [actividad 1](#actividad1) completa, con las 5  ([p1](#p1), [p2](#p2), [p3](#p3), [p4](#p4),[p5](#p5) ) preguntas completadas y su respectiva verificación |
 | 2 | 5.0 | Se evidencia la [actividad  2](#actividad2)completa, con la documentación y wl link de todos los dodigos ([p6](#p6), [p7](#p7)) |
 | nota final del promedio | 5.0 |  |
+
 
 
 
